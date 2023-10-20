@@ -1,30 +1,32 @@
 const mongoose = require('mongoose');
 
-const scores = mongoose.Schema({
+const lastlogins = mongoose.Schema({
 
-    game: [{ type: mongoose.Schema.Types.ObjectId, ref: 'games' }],
+    uid: Number,
     date: Date,
-    level: Number,
+    ip: String,
+    Localisation: String,
    
     });
 
 const userSchema = mongoose.Schema({
 
-    codeneo : String,
-    certified: Boolean,
-    email: String,
-    password: String,
-    token: String,
-    firstname: String,
-    lastname: String,
-    company: String,
-    jobtitle: String,
-    country: String,
-    phonenumber: String,
-    city: String,
-    linkedin: String,
-    profilepicture: String,
-    scores: [scores]
+    usrUid : String,
+    token : String,
+    firstname : String,
+    lastname : String,
+    email : String,
+    password : String,
+    signUpDate : String,
+    blockedUsers : [String],
+    isActivated : Boolean,    
+    isCertified : Boolean,
+    isDeleted : Boolean,
+    isBanned : Boolean,
+    mainCoupon : String,
+    mainPicture : String,
+    mainVideo : String,
+    lastlogins : [lastlogins]
 
 });
 

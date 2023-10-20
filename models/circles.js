@@ -10,18 +10,60 @@ const cards = mongoose.Schema ({
     phone : String,
     email : String,
     fullAddress : String,
-    website : String,
-    socialLinkedIn : String,
-    socialFacebook : String,
-    socialInstagram : String,
-    socialYoutube : String,
-    socialTweeter : String,
     isMain : Boolean,
     isDeleted : Boolean,
     endDate : Boolean,
     deleter : { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
     
     })
+
+const members = mongoose.Schema({
+
+    uid : NUMBER,
+    request : { type: mongoose.Schema.Types.ObjectId, ref: 'circlerequests' },
+    profile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
+    role : String,
+    joinDate : Date,
+    hasQuit : Boolean,
+    quitter : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+    isDeleted : Boolean,
+    deleter : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+    endDate : Date
+
+})
+
+const prices = mongoose.Schema ({
+
+    uid : Number,
+    label : String,
+    title : String,
+    amount : Number,
+    cv : Number,
+    qv : Number,
+    qp : Number,
+    frequency : Number,
+    refundPolicy : String,
+    paymentlink : String,
+    isCurrent : Boolean,
+    isDeleted : Boolean,
+
+})
+
+const coupons = mongoose.Schema ({
+    
+    uid : Number,
+    name : String,
+    expDate : Date,
+    newPrice : Number,
+    newCv : Number,
+    newQv : Number,
+    newQp : Number,
+    quantityAvailable : Number,
+    isExpired : Boolean,
+    isDeleted : Boolean
+
+})
+
 
 const contacts = mongoose.Schema ({
 
@@ -45,7 +87,8 @@ const contacts = mongoose.Schema ({
 const admins = mongoose.Schema ({
 
     uid : Number,
-    user : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+    profile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
+    request : { type: mongoose.Schema.Types.ObjectId, ref: 'circlerequests' },
     role : String,
     creationDate : Date,
     isDeleted : Boolean,
@@ -88,6 +131,7 @@ const pictureAlbums = mongoose.Schema ({
     Description : String,
     CreationDate : Date,
     Pictures : [String],
+    forMembers : Boolean
 
 })
     
@@ -97,9 +141,22 @@ const videosAlbums = mongoose.Schema ({
     title : String,
     description : String,
     creationDate : DATE,
-    videos : [String]
+    videos : [String],
+    forMembers : Boolean
     
 })
+
+const documents = mongoose.Schema ({
+    
+    uid : NUMBER,
+    title : String,
+    description : String,
+    creationDate : DATE,
+    files : [String],
+    forMembers : Boolean
+    
+})
+
 
 const updates = mongoose.Schema ({
 
@@ -112,28 +169,27 @@ const updates = mongoose.Schema ({
         
 })
 
-const profileSchema = mongoose.Schema({
+const circleSchema = mongoose.Schema({
 
-    pflUid : String,
+    icUid : String,
     owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-    activeplan : { type: mongoose.Schema.Types.ObjectId, ref: 'plans' },
-    mainCircle : { type: mongoose.Schema.Types.ObjectId, ref: 'circles'},
     displayName : String,
     coverage : String,
     profilePicture : String,
     bannerPicture : String,
     mainVideo : String,
     creationDate : Date,
+    category : String,
+    subCategory : String,
     countries : [String],
     cities : [String],
-    profiletype : String,
     jobCategories : [String],
     jobSubCategories : [String],
     interests : [String],
     skills : [String],
-    experienceLevel : String,
-    expertiseLevel : String,
-    eventsInterestedIn : [String],
+    experienceLevels : [String],
+    expertiseLevels : [String],
+    events : [String],
     cards : [cards],
     contacts : [contacts],
     admins : [admins],
@@ -141,27 +197,25 @@ const profileSchema = mongoose.Schema({
     testimonials : [testimonials],
     pictureAlbums : [pictureAlbums],
     videosAlbums : [videosAlbums],
-    updates : [updates],
     website : String,
     socialLinkedIn : String,
     socialFacebook : String,
     socialInstagram : String,
     socialYoutube : String,
     socialTweeter : String,
+    updates : [updates],
+    prices : [prices],
+    coupons : [coupons],
+    members : [members],
+    documents : [documents],
     isVisible : Boolean,
     privacy : String,
-    isPartner : Boolean,
-    isMentor : Boolean,
-    isCoach : Boolean,
-    isCloser : Boolean,
-    isMember : Boolean,
-    isVisible : Boolean,
     isDeleted : Boolean,
     endDate : Date,
     deleter : { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
     
 });
 
-const Profile = mongoose.model('profiles', profileSchema);
+const Circle = mongoose.model('circles', circleSchema);
 
-module.exports = Profile;
+module.exports = Circle;
