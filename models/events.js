@@ -82,6 +82,7 @@ const occurences = mongoose.Schema ({
     startHour : Date,
     endDate : Date,
     endHour : Date,
+    instructions : String,
     isDeleted : String,
     deleter : { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
     
