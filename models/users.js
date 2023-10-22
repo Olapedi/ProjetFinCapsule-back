@@ -11,21 +11,30 @@ const lastlogins = mongoose.Schema({
 
 const userSchema = mongoose.Schema({
 
-    usrUid : String,
+    useUid : String,
+    neocode : String,
     token : String,
     firstname : String,
     lastname : String,
     email : String,
     password : String,
     signUpDate : String,
-    blockedUsers : [String],
+    picture : String,
+    video : String,
+    language : String,
+    timeZone : String,
+    currentPlan : { type: mongoose.Schema.Types.ObjectId, ref: 'plans' },
+    isCountryLimited : Boolean,
+    isCityLimited : Boolean,
+    isJobLimited : Boolean,
+    limitCount : Number,
+    limitCountry : String,
+    limitCity : String,
     isActivated : Boolean,    
     isCertified : Boolean,
     isDeleted : Boolean,
     isBanned : Boolean,
-    mainCoupon : String,
-    mainPicture : String,
-    mainVideo : String,
+    blockedUsers : [String],
     lastlogins : [lastlogins]
 
 });

@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const affiliateSchema = mongoose.Schema({
 
-afUid: String,
+affUid: String,
 sponsor : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
 affiliate : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-date : Date
+date : Date,
 
 });
 

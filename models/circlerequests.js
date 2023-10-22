@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const circlerequestSchema = mongoose.Schema({
 
-    icrUid : String,
-    memberProfile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles'},
+    crqUid : String,
+    profile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles'},
     senderAccount : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     senderProfile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     receiverProfile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },

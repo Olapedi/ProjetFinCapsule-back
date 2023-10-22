@@ -1,8 +1,16 @@
 const mongoose = require('mongoose');
 
+const strengths = mongoose.Schema ({
+
+    uid : Number,
+    text : String,
+    likes : [String],
+
+})
+
 const cards = mongoose.Schema ({
 
-    uid : NUMBER,    
+    uid : Number,    
     label : String,
     displayName : String,
     title : String,
@@ -67,6 +75,18 @@ const legalinfos = mongoose.Schema ({
     
 })
 
+const documents = mongoose.Schema ({
+    
+    uid : Number,
+    title : String,
+    description : String,
+    creationDate : DATE,
+    files : [String],
+    privacy : String,
+    
+})
+
+
 const testimonials = mongoose.Schema ({
 
     uid : Number,
@@ -114,26 +134,24 @@ const updates = mongoose.Schema ({
 
 const profileSchema = mongoose.Schema({
 
-    pflUid : String,
+    proUid : String,
     owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-    activeplan : { type: mongoose.Schema.Types.ObjectId, ref: 'plans' },
     mainCircle : { type: mongoose.Schema.Types.ObjectId, ref: 'circles'},
     displayName : String,
-    coverage : String,
-    profilePicture : String,
+    type : String,
+    mainPicture : String,
     bannerPicture : String,
     mainVideo : String,
     creationDate : Date,
+    coverage : String,
     countries : [String],
     cities : [String],
-    profiletype : String,
     jobCategories : [String],
     jobSubCategories : [String],
     interests : [String],
-    skills : [String],
-    experienceLevel : String,
-    expertiseLevel : String,
-    eventsInterestedIn : [String],
+    strengths : [strengths],
+    experience : String,
+    expertise : String,
     cards : [cards],
     contacts : [contacts],
     admins : [admins],
@@ -141,6 +159,9 @@ const profileSchema = mongoose.Schema({
     testimonials : [testimonials],
     pictureAlbums : [pictureAlbums],
     videosAlbums : [videosAlbums],
+    eventsFavorites : [String],
+    profilesFavorites : [String],
+    documents : [documents],
     updates : [updates],
     website : String,
     socialLinkedIn : String,
@@ -154,8 +175,6 @@ const profileSchema = mongoose.Schema({
     isMentor : Boolean,
     isCoach : Boolean,
     isCloser : Boolean,
-    isMember : Boolean,
-    isVisible : Boolean,
     isDeleted : Boolean,
     endDate : Date,
     deleter : { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
