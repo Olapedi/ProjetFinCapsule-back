@@ -33,6 +33,7 @@ const isValidEmail = validateEmail(email);
 if (!isValidEmail) {
 
   result.push(results[0]) 
+
   return result;
 
 } else {
@@ -42,6 +43,7 @@ if (!isValidEmail) {
     if (data == null) {
 
       result.push(results[1]);
+
       return result;
       
       } else {
@@ -49,6 +51,7 @@ if (!isValidEmail) {
         if (!bcrypt.compareSync(password, data.password)) {
 
           result.push(results[2]);
+
           return result;
 
       } else {
@@ -77,7 +80,7 @@ if (!isValidEmail) {
 
         result.push(results[3]);
         result.push(userSignedIn);
-        
+
         return result;
     
         }
