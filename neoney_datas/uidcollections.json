@@ -1,0 +1,11 @@
+[
+
+{ "code" : "use", "collection" : "users" },
+{ "code" : "aff", "collection" : "affiliates" },  
+{ "code" : "pro", "collection" : "profiles" },  
+{ "code" : "pla", "collection" : "plans" },
+{ "code" : "leg", "collection" : "legalinfos" },  
+{ "code" : "cir", "collection" : "users" },  
+{ "code" : "crq", "collection" : "circlerequests" }
+
+]
