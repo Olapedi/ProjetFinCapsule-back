@@ -13,7 +13,7 @@ const participants = mongoose.Schema ({
 
 const messages = mongoose.Schema({
 
-    sendDate : DATE,
+    sendDate : Date,
     senderUser : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     senderProfile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     text : String,

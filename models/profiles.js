@@ -80,7 +80,7 @@ const documents = mongoose.Schema ({
     uid : Number,
     title : String,
     description : String,
-    creationDate : DATE,
+    creationDate : Date,
     files : [String],
     privacy : String,
     
@@ -92,7 +92,7 @@ const testimonials = mongoose.Schema ({
     uid : Number,
     type : String,
     video : String,
-    picture : SRING,
+    picture : String,
     description : String,
     priority : Number,
     isDeleted : Boolean,
@@ -113,10 +113,10 @@ const pictureAlbums = mongoose.Schema ({
     
 const videosAlbums = mongoose.Schema ({
     
-    uid : NUMBER,
+    uid : Number,
     title : String,
     description : String,
-    creationDate : DATE,
+    creationDate : Date,
     videos : [String]
     
 })

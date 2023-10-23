@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const cards = mongoose.Schema ({
 
-    uid : NUMBER,    
+    uid : Number,    
     label : String,
     displayName : String,
     title : String,
@@ -19,7 +19,7 @@ const cards = mongoose.Schema ({
 
 const attendees = mongoose.Schema({
 
-    uid : NUMBER,
+    uid : Number,
     request : { type: mongoose.Schema.Types.ObjectId, ref: 'eventrequests' },
     profile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     role : String,
@@ -119,7 +119,7 @@ const testimonials = mongoose.Schema ({
     uid : Number,
     type : String,
     video : String,
-    picture : SRING,
+    picture : String,
     description : String,
     priority : Number,
     isDeleted : Boolean,
@@ -130,10 +130,10 @@ const testimonials = mongoose.Schema ({
 
 const documents = mongoose.Schema ({
     
-    uid : NUMBER,
+    uid : Number,
     title : String,
     description : String,
-    creationDate : DATE,
+    creationDate : Date,
     files : [String],
     forMembers : Boolean
     
