@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
   User.find().then((data) => {
 
     data.map((item) => {
-
+      console.log(item)
       userDisplay.push({
         
         firstname: item.firstname, 

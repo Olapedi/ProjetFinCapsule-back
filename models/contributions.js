@@ -26,7 +26,7 @@ const contributionSchema = mongoose.Schema({
     mainVideo : String,
     videos : [String],
     message : String,
-    isVisible : BOOLEAN,
+    isVisible : Boolean,
     privacy : String,
     hashtags : [String],
     likes : [String],

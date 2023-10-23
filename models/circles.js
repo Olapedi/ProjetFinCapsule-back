@@ -10,7 +10,7 @@ const strengths = mongoose.Schema ({
 
 const cards = mongoose.Schema ({
 
-    uid : NUMBER,    
+    uid : Number,    
     label : String,
     displayName : String,
     title : String,
@@ -27,7 +27,7 @@ const cards = mongoose.Schema ({
 
 const members = mongoose.Schema({
 
-    uid : NUMBER,
+    uid : Number,
     request : { type: mongoose.Schema.Types.ObjectId, ref: 'circlerequests' },
     profile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     role : String,
@@ -145,7 +145,7 @@ const pictureAlbums = mongoose.Schema ({
     
 const videosAlbums = mongoose.Schema ({
     
-    uid : NUMBER,
+    uid : Number,
     title : String,
     description : String,
     creationDate : DATE,
