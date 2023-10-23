@@ -100,9 +100,15 @@ router.post('/signup', async (req, res) => {
 
 router.post('/activate', async (req, res) => {
 
+  const userreceived = {
+    
+    useUid : req.body.useUid,
+    activationCode : req.body.activationCode,
+
+  }
+
   const datareceived = [{
 
-    activationCode : req.body.activationCode,
     displayName : req.body.displayName,
     title : req.body.title,
     organization : req.body.organization,
@@ -117,12 +123,22 @@ router.post('/activate', async (req, res) => {
 
   }]
   
-  const activationResult = await activateuser(activationCode);
+  const activationResult = await activateuser(userreceived);
 
-  const result = await newprofile(datareceived);
+  if (activationResult[0].result) {
+
+    const result = await newprofile(datareceived);
   
-  console.log(result)
-  res.json(result);
+    console.log(result)
+    res.json(result);
+
+  } else {
+
+
+    res.json(activationResult);
+
+  }
+
   
   });
 

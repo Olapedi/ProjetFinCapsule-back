@@ -11,17 +11,20 @@ const token = uid2(32);
 
 // Import Project Modules
 
-const results = require('../../neoney_results/results_users.json')
+const results = require('../../neoney_results/results_users.json');
+const Profile = require('../../models/profiles');
 
 // Function
 
-module.exports = async function activateuser(activationCode){
+module.exports = async function activateuser(userreceived){
+
+    console.log(userreceived);
 
     let result = [];
 
       // Vérification de l'existance de l'utilisateur dans la base
 
-      const data = await User.findOne({useUid: useUid});
+      const data = await User.findOne({useUid: userreceived.useUid});
   
       if (data == null) {
   
@@ -45,7 +48,8 @@ module.exports = async function activateuser(activationCode){
           email: data.email, 
           token: data.token, 
           useUid: data.useUid, 
-          neocode: data.neocode, 
+          neocode: data.neocode,
+          activationCode : data.activationCode, 
           country: data.country, 
           city: data.city, 
           phone: data.phone, 
@@ -60,8 +64,32 @@ module.exports = async function activateuser(activationCode){
           
         }
 
-        result.push(results[20]);
-        result.push(user);
+        if (userreceived.activationCode !== user.activationCode) {
+
+            result.push(results[21]);
+            result.push(user);
+
+        } else {
+
+            // Code d'activation correct. Modification de l'utilisateur 
+
+        await  User.updateOne(
+
+                    { useUid: user.useUid },
+                    { isActivated: true }
+
+                )
+        
+        const data2 = await User.findOne({useUid: userreceived.useUid});
+        
+            console.log(data2);
+
+            result.push(results[22]);
+            result.push(data2);
+
+
+        }
+
 
         return result;
 
