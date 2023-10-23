@@ -1,24 +1,24 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-// var fetch = require('node-fetch');
-const Event = require('../models/events');
+const Event = require("../models/events");
 
 // Import Project Modules
-// const results = require('../neoney_results/results_events.json');
-const newEvent = require('../neoney_modules/events/newevent');
+const createNewEvent = require("../neoney_modules/events/newevent");
+const getAllEvents = require("../neoney_modules/events/newevent");
+
+// Consultation de tous les événements (pour verif pour l'instant)
+router.get("/", async (req, res) => {
+    let result = await Event.find()
+    res.json(result);
+});
 
 // Création d'un nouvel événement
-router.post('/new', async (req, res) => {
-      
-    console.log("From route events/new - req.body =>", req.body)
+router.post("/new", async (req, res) => {
+    // On passe tout le body
+    let result = await createNewEvent(req.body);
 
-    // A priori on passe tout le body
-    let result = await newEvent(req.body)
-
-    console.log("From route events/new - tableau result =>", result)
+    // Renvoie du résultat
     res.json(result);
-    
-  })
-  
+});
 
 module.exports = router;

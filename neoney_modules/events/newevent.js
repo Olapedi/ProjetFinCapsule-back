@@ -5,7 +5,6 @@ const results = require('../../neoney_results/results_events.json');
 const { default: mongoose } = require('mongoose');
 
 
-
 // Fonction Helper pour traiter les requêtes depuis la route events/new
 // Prend 1 argument :
 //  - eventData : correspond aux informations provenant du front reçues par le back
@@ -13,13 +12,12 @@ module.exports = async function newEvent(eventData) {
 
         // Initilisation de la variable stockant les objets à renvoyer
         // 2 objets à priori :
-        //    - message standardisé
+        //    - message technique standardisé (objet avec 3 propriétés : id, message, result)
         //    - data
         let result = []
 
         // Vérificattion de l'existence du token dans la base
         const checkUserTokenResult = await checkUserToken(eventData.token)
-
 
         // Exploitation conditionnelle du résultat
         if (!checkUserTokenResult[0].result) {
@@ -29,7 +27,7 @@ module.exports = async function newEvent(eventData) {
             result.push(results[0])
             result.push(checkUserTokenResult[1])
 
-            console.log("From noeney_modules/events/newevents.js - if !isActivated =>", !checkUserTokenResult[1].isActivated)
+            // console.log("From noeney_modules/events/newevents.js - if !isActivated =>", !checkUserTokenResult[1].isActivated)
 
             return result
         } else {
@@ -106,7 +104,7 @@ module.exports = async function newEvent(eventData) {
             // Création et sauvegarde de l'énévement
             const newEventCreated = await newEvent.save()
 
-            console.log("From noeney_modules/events/newevents.js - newEventCreated =>", newEventCreated)
+            // console.log("From noeney_modules/events/newevents.js - newEventCreated =>", newEventCreated)
 
             //
             if (newEventCreated) {
