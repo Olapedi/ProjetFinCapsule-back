@@ -1,0 +1,22 @@
+[
+  { "id": 0, "message" : "Inscription non activée", "result": false},
+  { "id": 1, "message" : "Problème d'ajout de l'événement dans la base de données", "result": false},
+  { "id": 2, "message" : "", "result": false},
+  { "id": 3, "message" : "Evénement créé", "result": true},
+  { "id": 4, "message" : "", "result": false},
+  { "id": 5, "message" : "", "result": false},
+  { "id": 6, "message" : "", "result": true},
+  { "id": 7, "message" : "", "result": false},
+  { "id": 8, "message" : "", "result": false},
+  { "id": 9, "message" : "", "result": false},
+  { "id": 10, "message" : "", "result": false},
+  { "id": 11, "message" : "", "result": false},
+  { "id": 12, "message" : "", "result": false},
+  { "id": 13, "message" : "", "result": false},
+  { "id": 14, "message" : "", "result": false},
+  { "id": 15, "message" : "", "result": false},
+  { "id": 16, "message" : "", "result": false},
+  { "id": 17, "message" : "", "result": true},
+  { "id": 18, "message" : "", "result": false},
+  { "id": 19, "message" : "", "result": false}
+]
