@@ -27,6 +27,8 @@ const checkbodysignup = require('./checkbodysignup')
 
 module.exports = async function signup(userdata) {
 
+  console.log(userdata)
+  
   let result = [];
 
   const firstname = userdata[0].firstname.trim();

@@ -90,6 +90,7 @@ router.post('/signup', async (req, res) => {
   
   const result = await signup(datareceived);
   
+  console.log(result)
   res.json(result);
   
   });
