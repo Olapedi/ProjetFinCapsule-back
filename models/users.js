@@ -13,6 +13,7 @@ const userSchema = mongoose.Schema({
 
     useUid : String,
     neocode : String,
+    activationCode : String,
     token : String,
     firstname : String,
     lastname : String,

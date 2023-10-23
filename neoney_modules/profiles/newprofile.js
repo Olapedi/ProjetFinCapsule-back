@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt');
 
 // Import Neoney Results
 
-const results = require('../../neoney_results/results_users.json');
+const results = require('../../neoney_results/results_profiles.json');
 
 // Import Neoney Data
 
@@ -19,60 +19,129 @@ const uidcollections = require('../../neoney_datas/uidcollections.json');
 
 // Import Neoney Modules
 
-const generateuseuid = require('./generateuseuid');
-const checkSponsor = require('./checksponsor');
-const checkbodysignup = require('./checkbodysignup');
-const activationCode = require('./activationcode');
-const activationcode = require('./activationcode');
+const generateprouid = require('./generateprouid');
+const checkbodynewprofile = require('./checkbodynewprofile')
+const checkuseruid = require('../../neoney_modules/_common/checkuseruid');
+const Profile = require('../../models/profiles');
 
 // Function
 
-module.exports = async function signup(userdata) {
-
+module.exports = async function newprofile(profiledata) {
+  
   let result = [];
 
-  const activationCode = activationcode();
+  // Informations de l'utilisateur
 
-  const firstname = userdata[0].firstname.trim();
-  const lastname = userdata[0].lastname.trim();
-  const email = userdata[0].email.trim();
-  const password = userdata[0].password.trim();
-  const hash = bcrypt.hashSync(password, 10)
-  const token = uid2(32);
-  const country = userdata[0].country.trim();
-  const city = userdata[0].city.trim();
-  const phone = userdata[0].phone.trim();
-  const sponsor = userdata[0].sponsor.trim();
-  const useUid = generateuseuid();
-  const neocode = `TMP${useUid}`;
-  const isCountryLimited = true;
-  const isCityLimited = true;
-  const isJobLimited = true;
-  const limitCount = 200;
-  const isActivated = false;   
-  const isCertified = false;
-  const signUpDate = new Date;
+  const user = await checkuseruid(profiledata[0].useUid);
 
+  if (user[0].result) {
+
+    const useUid = profiledata[0].useUid;
+    const owner = user[1].id;
+
+    let countries = [];
+    let cities = [];
+
+    countries.push(user[1].country);
+    cities.push(user[1].city);
+
+    // Informations de profil
+  
+    let jobCategories = [];
+    let jobSubCategories = [];
+    
+    jobCategories.push(profiledata[0].jobCategories);
+    jobSubCategories.push(profiledata[0].jobSubCategories);
+
+    const creationDate = new Date();
+    const label = 'Main';
+    const isVisible = true;
+    const privacy = 'public';
+    const isPartner = false;
+    const isMentor = false;
+    const isCoach = false;
+    const isCloser = false;
+    const isDeleted = false;
+
+    //Information de Carte de visite
+
+    const displayName = profiledata[0].displayName;
+    const title = profiledata[0].title;
+    const organization = profiledata[0].organization;
+    const description = profiledata[0].description;
+    const website = profiledata[0].website;
+    const phone = profiledata[0].phone;
+    const email = profiledata[0].email;
+    const isMain = true;
+
+    const newProfile = new Profile({
+
+      owner : owner,
+      useUid : useUid,
+      creationDate : creationDate,
+      label : label,
+      countries : countries,
+      cities : cities,
+      jobCategories : jobCategories,
+      jobSubCategories : jobSubCategories,
+      isVisible : isVisible,
+      privacy : privacy,
+      isPartner : isPartner,
+      isMentor : isMentor,
+      isCoach : isCoach,
+      isCloser : isCloser,
+      isDeleted : isDeleted,
+      cards : {
+
+        uid : 0,
+        displayName : displayName,
+        title : title,
+        organization : organization,
+        description : description,
+        website : website,
+        phone : phone,
+        email : email,
+        isMain : isMain,
+
+      }
+
+    })
+
+    const newitem = await newProfile.save();
+
+
+   
+    return newitem;
+
+
+  }
+
+
+
+
+        /*
+  
   // Vérifier si les données reçues sont vides 
 
-  const userdata2 = {
+  const profiledata2 = {
 
-    firstname : firstname,
-    lastname : lastname,
-    email : email,
-    password : password,
-    hash : hash,
-    token : token,
-    country : country,
-    city : city,
+    displayName : displayName,
+    title : title,
+    organisation : organization,
+    description : description,
+    type : type,
+    jobCategories : jobCategories,
+    jobSubCategories : jobSubCategories,
+    website : website,
     phone : phone,
-    sponsor : sponsor,
-    useUid : useUid,
-    neocode : neocode,
+    email : email,
+    useUid : useUid
   
   }
   
-  const checkbodyresult = await checkbodysignup(userdata2);
+  const checkbodyresult = await checkbodynewprofile(userdata2);
+
+  console.log(checkbodyresult);
 
   if (!checkbodyresult[0].result) {
 
@@ -132,7 +201,6 @@ module.exports = async function signup(userdata) {
         sponsor : sponsor,
         useUid : useUid,
         neocode : neocode,
-        activationCode : activationCode,
         isCountryLimited : isCountryLimited,
         isCityLimited : isCityLimited,
         isJobLimited : isJobLimited,
@@ -155,7 +223,6 @@ module.exports = async function signup(userdata) {
                             token: newitem.token, 
                             useUid: newitem.useUid, 
                             neocode: newitem.neocode, 
-                            activationCode : activationCode,
                             country: newitem.country, 
                             city: newitem.city, 
                             phone: newitem.phone, 
@@ -193,6 +260,10 @@ module.exports = async function signup(userdata) {
   }
 
 }
+
+
+
+*/
 
 }
     

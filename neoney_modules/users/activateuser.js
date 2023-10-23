@@ -15,7 +15,7 @@ const results = require('../../neoney_results/results_users.json')
 
 // Function
 
-module.exports = async function checkuseruid(useUid){
+module.exports = async function activateuser(activationCode){
 
     let result = [];
 

@@ -13,6 +13,7 @@ const bcrypt = require('bcrypt');
 const results = require('../neoney_results/results_users.json');
 const signin = require('../neoney_modules/users/signin')
 const signup = require('../neoney_modules/users/signup');
+const activateuser = require('../neoney_modules/users/activateuser');
 
 /* Lister tous les utilisateurs de la base */
 
@@ -94,5 +95,37 @@ router.post('/signup', async (req, res) => {
   res.json(result);
   
   });
+
+// Activation de l'utilisateur après son inscription et création du premier profil
+
+router.post('/activate', async (req, res) => {
+
+  const datareceived = [{
+
+    activationCode : req.body.activationCode,
+    displayName : req.body.displayName,
+    title : req.body.title,
+    organization : req.body.organization,
+    description : req.body.description,
+    type : req.body.type,
+    jobCategories : req.body.jobCategories,
+    jobSubCategories : req.body.jobSubCategories,
+    website : req.body.website,
+    phone : req.body.phone,
+    email : req.body.email,
+    useUid : req.body.useUid
+
+  }]
+  
+  const activationResult = await activateuser(activationCode);
+
+  const result = await newprofile(datareceived);
+  
+  console.log(result)
+  res.json(result);
+  
+  });
+
+
 
 module.exports = router;

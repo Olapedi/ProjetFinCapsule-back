@@ -18,7 +18,5 @@
     { "id": 16, "message" : "Le champ Sponsor est obligatoire", "result": false},
     { "id": 17, "message" : "Tous les champs sont remplis", "result": true},
     { "id": 18, "message" : "Le token n'a pas été généré", "result": false},
-    { "id": 19, "message" : "Le hash du mot de passe est vide", "result": false},
-    { "id": 20, "message" : "L'utilisateur existe bien dans la base", "result": true}
-    
+    { "id": 19, "message" : "Le hash du mot de passe est vide", "result": false}
   ]
