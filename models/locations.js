@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const cards = mongoose.Schema ({
 
-    uid : NUMBER,    
+    uid : Number,    
     label : String,
     displayName : String,
     title : String,
@@ -69,7 +69,7 @@ const testimonials = mongoose.Schema ({
     uid : Number,
     type : String,
     video : String,
-    picture : SRING,
+    picture : String,
     description : String,
     priority : Number,
     isDeleted : Boolean,
@@ -93,7 +93,7 @@ const videosAlbums = mongoose.Schema ({
     uid : NUMBER,
     title : String,
     description : String,
-    creationDate : DATE,
+    creationDate : Date,
     videos : [String]
     
 })
@@ -113,17 +113,17 @@ const locationSchema = mongoose.Schema({
 
     pflUid : String,
     owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-    category : STRING,
-    subCategory : STRING,
-    label : STRING,
-    country : STRING,
-    city : STRING,
-    address : STRING,
-    locationTerms : STRING,
-    socialLinkedIn : STRING,
-    socialFacebook : STRING,
-    socialInstagram : STRING,
-    socialYoutube : STRING,
+    category : String,
+    subCategory : String,
+    label : String,
+    country : String,
+    city : String,
+    address : String,
+    locationTerms : String,
+    socialLinkedIn : String,
+    socialFacebook : String,
+    socialInstagram : String,
+    socialYoutube : String,
     profilePicture : String,
     bannerPicture : String,
     mainVideo : String,
@@ -146,7 +146,7 @@ const locationSchema = mongoose.Schema({
     socialTweeter : String,
     isVisible : Boolean,
     privacy : String,
-    isPrivate : BOOLEAN,
+    isPrivate : Boolean,
     isDeleted : Boolean,
     endDate : Date,
     deleter : { type: mongoose.Schema.Types.ObjectId, ref: 'users' }

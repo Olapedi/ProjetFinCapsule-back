@@ -4,15 +4,15 @@ const mongoose = require('mongoose');
 
 const payments = mongoose.Schema ({
 
-    uid : NUMBER,
-    isSuccess : BOOLEAN,
+    uid : Number,
+    isSuccess : Boolean,
     paymentMetthod : String,
-    amount : NUMBER,   
+    amount : Number,   
     date : DATE,
     stripeRef : String,
     bankTransferRef : String,
     proof : String,
-    isReceived : BOOLEAN,
+    isReceived : Boolean,
     dateReceived : Date,
 
 })
@@ -30,10 +30,10 @@ const invoiceSchema = mongoose.Schema({
     validUntil : Date,
     paymentTerms : String,
     paymentMetthod : String,
-    isDue : BOOLEAN,
-    isPaid : BOOLEAN,
-    isRefunded : BOOLEAN,
-    isUnpaid : BOOLEAN,
+    isDue : Boolean,
+    isPaid : Boolean,
+    isRefunded : Boolean,
+    isUnpaid : Boolean,
     payments : [payments],
 
 });
