@@ -14,7 +14,7 @@ const alignrequestSchema = mongoose.Schema({
     enderAccount : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
 
 });
-
+ 
 const Alignrequest = mongoose.model('alignrequests', alignrequestSchema);
 
 module.exports = Alignrequest;
