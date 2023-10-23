@@ -14,6 +14,7 @@ const results = require('../neoney_results/results_users.json');
 const signin = require('../neoney_modules/users/signin')
 const signup = require('../neoney_modules/users/signup');
 const activateuser = require('../neoney_modules/users/activateuser');
+const newprofile = require('../neoney_modules/profiles/newprofile');
 
 /* Lister tous les utilisateurs de la base */
 
@@ -100,6 +101,8 @@ router.post('/signup', async (req, res) => {
 
 router.post('/activate', async (req, res) => {
 
+  const result = [];
+
   const userreceived = {
     
     useUid : req.body.useUid,
@@ -127,21 +130,20 @@ router.post('/activate', async (req, res) => {
 
   if (activationResult[0].result) {
 
-    const result = await newprofile(datareceived);
+    const resultProfile = await newprofile(datareceived);
   
-    console.log(result)
+    result.push(activationResult[0]);
+    result.push(resultProfile);
+
     res.json(result);
 
   } else {
-
 
     res.json(activationResult);
 
   }
 
   
-  });
-
-
+});
 
 module.exports = router;

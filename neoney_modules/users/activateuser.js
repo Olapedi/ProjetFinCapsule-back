@@ -29,7 +29,7 @@ module.exports = async function activateuser(userreceived){
       if (data == null) {
   
         // La recherche n'a renvoyé aucun résultat. L'utilisateur n'existe pas.
-        const user = {useUid: useUid};
+        const user = {useUid: userreceived.useUid};
 
         result.push(results[1]);
         result.push(user);
