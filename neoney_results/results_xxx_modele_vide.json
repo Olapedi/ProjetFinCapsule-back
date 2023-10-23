@@ -1,8 +1,8 @@
-  [
-    { "id": 0, "message" : "Token non valide", "result": false},
-    { "id": 1, "message" : "Token valide", "result": true},
-    { "id": 2, "message" : "Erreur inconnue. Contactez le support", "result": false},
-    { "id": 3, "message" : "", "result": true},
+[
+    { "id": 0, "message" : "Format email invalide", "result": false},
+    { "id": 1, "message" : "", "result": false},
+    { "id": 2, "message" : "", "result": false},
+    { "id": 3, "message" : "Accès autorisé", "result": true},
     { "id": 4, "message" : "", "result": false},
     { "id": 5, "message" : "", "result": false},
     { "id": 6, "message" : "", "result": true},

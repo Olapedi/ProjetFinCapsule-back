@@ -1,29 +1,24 @@
 var express = require('express');
 var router = express.Router();
-const { default: mongoose } = require('mongoose');
 // var fetch = require('node-fetch');
-const User = require('../models/users');
-
-// Authentication tools
-const uid2 = require ('uid2');
-const bcrypt = require('bcrypt');
+const Event = require('../models/events');
 
 // Import Project Modules
-const results = require('../neoney_results/results_events.json');
+// const results = require('../neoney_results/results_events.json');
+const newEvent = require('../neoney_modules/events/newevent');
 
 // Création d'un nouvel événement
 router.post('/new', async (req, res) => {
+      
+    console.log("From route events/new - req.body =>", req.body)
 
-    const credentials = [{
+    // A priori on passe tout le body
+    let result = await newEvent(req.body)
 
-      email : req.body.email,
-      password: req.body.password,
-
-    }]
-  
-    const result = await signin(credentials);
-  
+    console.log("From route events/new - tableau result =>", result)
     res.json(result);
     
   })
   
+
+module.exports = router;
