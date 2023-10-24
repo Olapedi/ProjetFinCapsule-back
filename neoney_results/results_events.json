@@ -1,9 +1,9 @@
 [
   { "id": 0, "message" : "Inscription non activée", "result": false},
   { "id": 1, "message" : "Problème d'ajout de l'événement dans la base de données", "result": false},
-  { "id": 2, "message" : "", "result": false},
+  { "id": 2, "message" : "Problème de récupération de l'événement dans la base de données", "result": false},
   { "id": 3, "message" : "Evénement créé", "result": true},
-  { "id": 4, "message" : "", "result": false},
+  { "id": 4, "message" : "Evénement trouvé en base", "result": false},
   { "id": 5, "message" : "", "result": false},
   { "id": 6, "message" : "", "result": true},
   { "id": 7, "message" : "", "result": false},

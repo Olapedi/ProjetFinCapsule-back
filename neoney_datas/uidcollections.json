@@ -6,6 +6,7 @@
 { "code" : "pla", "collection" : "plans" },
 { "code" : "leg", "collection" : "legalinfos" },  
 { "code" : "cir", "collection" : "users" },  
-{ "code" : "crq", "collection" : "circlerequests" }
+{ "code" : "crq", "collection" : "circlerequests" },
+{ "code" : "evt", "collection" : "events"}
 
 ]
