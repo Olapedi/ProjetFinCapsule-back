@@ -21,6 +21,7 @@
     { "id": 19, "message" : "Le hash du mot de passe est vide", "result": false},
     { "id": 20, "message" : "L'utilisateur existe bien dans la base", "result": true},
     { "id": 21, "message" : "Le code d'activation est incorrect", "result": false},
-    { "id": 22, "message" : "Compte activé", "result": true}
+    { "id": 22, "message" : "Compte activé", "result": true},
+    { "id": 23, "message" : "Ce compte est déjà activé", "result": false}
     
   ]

@@ -9,87 +9,176 @@ const bcrypt = require('bcrypt');
 
 // Import Neoney Results
 
-const results = require('../../neoney_results/results_users.json');
+const results = require('../../neoney_results/results_profiles.json');
 
 // Function
 
-module.exports = async function checkbodysignup(userdata2){
+module.exports = async function checkbodynewprofile(userdata2){
 
     let result = [];
 
-      // Initialisation des données à vérifier 
+    console.log(userdata2.displayName);
 
-      if (userdata2.firstname == '') {
+      if (userdata2.displayName !== undefined) {
 
-        result.push(results[9]);
+        if (userdata2.displayName == '') {
+
+          result.push(results[3]);
+          return result;
+  
+        } 
+
+      } else {
+
+        result.push(results[4]);
         return result;
 
-      } 
+      }
 
-      if (userdata2.lastname == '') {
+
+      if (userdata2.title !== undefined) {
+
+        if (userdata2.title == '') {
+
+          result.push(results[5]);
+          return result;
+  
+        } 
+
+      } else {
+
+        result.push(results[6]);
+        return result;
+
+      }
+
+
+      if (userdata2.organization !== undefined) {
+
+        if (userdata2.organization == '') {
+
+          result.push(results[7]);
+          return result;
+  
+        } 
+
+      } else {
+
+        result.push(results[8]);
+        return result;
+
+      }
+
+
+      if (userdata2.description !== undefined) {
+
+        if (userdata2.description == '') {
+
+          result.push(results[9]);
+          return result;
+  
+        } 
+
+      } else {
 
         result.push(results[10]);
         return result;
 
       }
 
-      if (userdata2.email == '') {
+      console.log(userdata2.jobCategories);
 
-        result.push(results[11]);
-        return result;
+      if (userdata2.jobCategories !== undefined) {
 
-      }
+        if (userdata2.jobCategories == '') {
 
-      if (userdata2.password == '') {
+          result.push(results[11]);
+          return result;
+  
+        } 
+
+      } else {
 
         result.push(results[12]);
         return result;
 
       }
 
-      if (userdata2.country == '') {
+      if (userdata2.jobSubCategories[0] !== undefined) {
 
-        result.push(results[13]);
-        return result;
+        if (userdata2.jobSubCategories == '') {
 
-      }
+          result.push(results[13]);
+          return result;
+  
+        } 
 
-      if (userdata2.city == '') {
+      } else {
 
         result.push(results[14]);
         return result;
 
       }
 
-      if (userdata2.phone == '') {
+      if (userdata2.website == undefined) {
 
         result.push(results[15]);
         return result;
 
       }
 
-      if (userdata2.sponsor == '') {
 
-        result.push(results[16]);
+      if (userdata2.phone !== undefined) {
+
+        if (userdata2.phone == '') {
+
+          result.push(results[16]);
+          return result;
+  
+        } 
+
+      } else {
+
+        result.push(results[17]);
         return result;
 
       }
 
-      if (userdata2.token == '') {
 
-        result.push(results[18]);
-        return result;
+      if (userdata2.email !== undefined) {
 
-      }
+        if (userdata2.email == '') {
 
-      if (userdata2.hash == '') {
+          result.push(results[18]);
+          return result;
+  
+        } 
+
+      } else {
 
         result.push(results[19]);
         return result;
 
       }
 
-      result.push(results[17]);
+
+      if (userdata2.useUid !== undefined) {
+
+        if (userdata2.useUid == '') {
+
+          result.push(results[20]);
+          return result;
+  
+        } 
+
+      } else {
+
+        result.push(results[21]);
+        return result;
+
+      }
+
+      result.push(results[22]);
       return result;
 
 }

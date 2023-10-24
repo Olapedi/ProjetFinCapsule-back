@@ -10,9 +10,10 @@ const bcrypt = require('bcrypt');
 
 // Import Project Modules
 
-const results = require('../neoney_results/results_users.json');
+const results = require('../neoney_results/results_profiles.json');
 const newprofile = require('../neoney_modules/profiles/newprofile');
 const checkuseruid = require('../neoney_modules/_common/checkuseruid');
+const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile');
 
 router.get('/', async function(req, res, next) {
 
@@ -33,7 +34,6 @@ router.post('/new', async (req, res) => {
     title : req.body.title,
     organization : req.body.organization,
     description : req.body.description,
-    type : req.body.type,
     jobCategories : req.body.jobCategories,
     jobSubCategories : req.body.jobSubCategories,
     website : req.body.website,
@@ -42,11 +42,24 @@ router.post('/new', async (req, res) => {
     useUid : req.body.useUid
 
   }]
+
+  console.log(datareceived[0].displayName);
   
-  const result = await newprofile(datareceived);
+  const checkresult = await checkbodynewprofile(datareceived[0]);
+
+  if (checkresult[0].result) {
+    
+    const result = await newprofile(datareceived);
+    res.json(result);
+
+  } else {
+    
+    res.json(checkresult);
+
+  }
+
   
-  console.log(result)
-  res.json(result);
+
   
   });
 

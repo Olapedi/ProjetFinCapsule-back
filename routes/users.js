@@ -15,6 +15,7 @@ const signin = require('../neoney_modules/users/signin')
 const signup = require('../neoney_modules/users/signup');
 const activateuser = require('../neoney_modules/users/activateuser');
 const newprofile = require('../neoney_modules/profiles/newprofile');
+const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile')
 
 /* Lister tous les utilisateurs de la base */
 
@@ -116,7 +117,6 @@ router.post('/activate', async (req, res) => {
     title : req.body.title,
     organization : req.body.organization,
     description : req.body.description,
-    type : req.body.type,
     jobCategories : req.body.jobCategories,
     jobSubCategories : req.body.jobSubCategories,
     website : req.body.website,
@@ -126,23 +126,32 @@ router.post('/activate', async (req, res) => {
 
   }]
   
-  const activationResult = await activateuser(userreceived);
+  const checkresult = await checkbodynewprofile(datareceived[0]);
 
-  if (activationResult[0].result) {
+  if (checkresult[0].result) {
+    
+    const activationResult = await activateuser(userreceived);
 
-    const resultProfile = await newprofile(datareceived);
+    if (activationResult[0].result) {
   
-    result.push(activationResult[0]);
-    result.push(resultProfile);
-
-    res.json(result);
+      const resultProfile = await newprofile(datareceived);
+    
+      result.push(activationResult[0]);
+      result.push(resultProfile);
+  
+      res.json(result);
+  
+    } else {
+  
+      res.json(activationResult);
+  
+    }
 
   } else {
-
-    res.json(activationResult);
+    
+    res.json(checkresult);
 
   }
-
   
 });
 

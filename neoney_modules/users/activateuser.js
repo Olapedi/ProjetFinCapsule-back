@@ -64,6 +64,10 @@ module.exports = async function activateuser(userreceived){
           
         }
 
+        // Vérifier si l'utilisateur n'est pas déjà activé
+
+        if (!user.isActivated) {
+
         if (userreceived.activationCode !== user.activationCode) {
 
             result.push(results[21]);
@@ -82,14 +86,18 @@ module.exports = async function activateuser(userreceived){
         
         const data2 = await User.findOne({useUid: userreceived.useUid});
         
-            console.log(data2);
-
             result.push(results[22]);
             result.push(data2);
 
 
         }
 
+      } else {
+
+        result.push(results[23]);
+        result.push(user);
+
+      }
 
         return result;
 
