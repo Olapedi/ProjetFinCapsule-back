@@ -15,9 +15,9 @@ router.get("/", async (req, res) => {
 });
 
 // Consultation d'un événement en particulier
-router.get("/:evUid", async (req, res) => {
-    let result = await getEventFromEvUid(req.params.evUid)
-    console.log("From route - get '/:evUid' ", result)
+router.get("/:evtUid", async (req, res) => {
+    let result = await getEventFromEvUid(req.params.evtUid)
+    console.log("From route - get '/:evtUid' ", result)
     res.json(result);
 });
 
