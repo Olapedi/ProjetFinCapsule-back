@@ -152,7 +152,7 @@ const updates = mongoose.Schema ({
 
 const eventSchema = mongoose.Schema({
 
-    evUid : String,
+    evtUid : String,
     owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     creationDate : Date,
     category : String,

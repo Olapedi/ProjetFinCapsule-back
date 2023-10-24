@@ -1,6 +1,6 @@
 const Event = require('../../models/events');
-const checkUserToken = require('..//_common/checkusertoken')
-const generateuseuid = require('../users/generateuseuid');
+const checkUserToken = require('../_common/checkusertoken')
+const generateuid = require('../users/generateuid');
 const results = require('../../neoney_results/results_events.json');
 const { default: mongoose } = require('mongoose');
 
@@ -38,9 +38,7 @@ module.exports = async function newEvent(eventData) {
 
             // TODO : faire la vérification que le uvUid n'existe pas déjà dans la base
             // avec un "while"
-            let evUid = generateuseuid()
-            // en concordance avec neoney_datas/uidcollections.json
-            evUid = "evt" + String(evUid)
+            let evtUid = generateuid("evt")
 
             // sous-document occurences
             const occurences = {
@@ -63,7 +61,7 @@ module.exports = async function newEvent(eventData) {
 
             // Déclaration du document principal
             const newEvent = new Event({
-                evUid : evUid, //String,
+                evtUid : evtUid, //String,
                 owner : userData._id, //{ type: mongoose.Schema.Types.ObjectId, ref: 'users' },
                 creationDate : Date.now(), //Date,
                 // category : '', //String,
@@ -79,7 +77,7 @@ module.exports = async function newEvent(eventData) {
                 // expertiseLevels : [''], //[String],
                 title : eventData.title, //String,
                 // shortDescription : '', //String,
-                // longDescription : '', //String,
+                longDescription : eventData.longDescription, //String,
                 // profilePicture : '', //String,
                 // bannerPicture : '', //String,
                 // mainVideo : '', //String,
