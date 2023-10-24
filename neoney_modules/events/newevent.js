@@ -1,6 +1,6 @@
 const Event = require('../../models/events');
 const checkUserToken = require('../_common/checkusertoken')
-const generateuid = require('../users/generateuid');
+const generateuid = require('../_common/generateuid');
 const results = require('../../neoney_results/results_events.json');
 const { default: mongoose } = require('mongoose');
 
