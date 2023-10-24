@@ -15,7 +15,8 @@ const signin = require('../neoney_modules/users/signin')
 const signup = require('../neoney_modules/users/signup');
 const activateuser = require('../neoney_modules/users/activateuser');
 const newprofile = require('../neoney_modules/profiles/newprofile');
-const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile')
+const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile');
+const checkuseruid = require('../neoney_modules/_common/checkuseruid');
 
 /* Lister tous les utilisateurs de la base */
 
@@ -56,6 +57,12 @@ router.get('/', function(req, res, next) {
   })
 
 });
+
+//Rechercher un utilisateur par son Uid
+router.get('/:useUid', (req,res) =>{
+  const data = checkuseruid(req.params.useUid)
+  res.json({data})
+  })
 
 // Connecter un utilisateur avec son adresse mail et son mot de passe 
 

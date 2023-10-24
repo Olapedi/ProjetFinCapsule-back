@@ -17,10 +17,14 @@ const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprof
 
 router.get('/', async function(req, res, next) {
 
-  const result = await checkuseruid('20231022f1403');
+  const result = await checkuseruid('202310221403');
   res.json(result);
 
 });
+
+router.get('/:proUid', (req,res)=>{
+
+})
 
 module.exports = router;
 
