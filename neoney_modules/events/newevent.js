@@ -1,5 +1,5 @@
 const Event = require('../../models/events');
-const checkUserToken = require('../../neoney_modules/_common/checkusertoken')
+const checkUserToken = require('..//_common/checkusertoken')
 const generateuseuid = require('../users/generateuseuid');
 const results = require('../../neoney_results/results_events.json');
 const { default: mongoose } = require('mongoose');
@@ -37,7 +37,10 @@ module.exports = async function newEvent(eventData) {
             let userData = checkUserTokenResult[1]
 
             // TODO : faire la vérification que le uvUid n'existe pas déjà dans la base
-            const evUid = generateuseuid()
+            // avec un "while"
+            let evUid = generateuseuid()
+            // en concordance avec neoney_datas/uidcollections.json
+            evUid = "evt" + String(evUid)
 
             // sous-document occurences
             const occurences = {
@@ -48,17 +51,17 @@ module.exports = async function newEvent(eventData) {
                 title : eventData.title, // String,
                 shortDescription : eventData.shortDescription, // String,
                 // timeZone : '', // String,
-                startDate : eventData.startDate, // Date,
-                startHour : eventData.startHour, // Date,
-                endDate : eventData.endDate, // Date,
-                endHour : eventData.endHour, // Date,
+                startDate : Date(eventData.startDate), // Date,
+                startHour : Date(eventData.startHour), // Date,
+                endDate : Date(eventData.endDate), // Date,
+                endHour : Date(eventData.endHour), // Date,
                 // instructions : '', // String,
                 // isDeleted : '', // String,
                 // deleter : null, // { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
 
             }
 
-            // document principal
+            // Déclaration du document principal
             const newEvent = new Event({
                 evUid : evUid, //String,
                 owner : userData._id, //{ type: mongoose.Schema.Types.ObjectId, ref: 'users' },
@@ -106,7 +109,7 @@ module.exports = async function newEvent(eventData) {
 
             // console.log("From noeney_modules/events/newevents.js - newEventCreated =>", newEventCreated)
 
-            //
+            // Verif que l'événement 
             if (newEventCreated) {
                 result.push(results[3])
                 result.push(newEventCreated)
