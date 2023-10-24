@@ -38,8 +38,9 @@ module.exports = async function newEvent(eventData) {
 
             // TODO : faire la vérification que le uvUid n'existe pas déjà dans la base
             // avec un "while"
-            const evUid = generateuseuid()
-            evUid = "evt" + evUid // en concordance avec neoney_datas/uidcollections.json
+            let evUid = generateuseuid()
+            // en concordance avec neoney_datas/uidcollections.json
+            evUid = "evt" + String(evUid)
 
             // sous-document occurences
             const occurences = {
@@ -50,10 +51,10 @@ module.exports = async function newEvent(eventData) {
                 title : eventData.title, // String,
                 shortDescription : eventData.shortDescription, // String,
                 // timeZone : '', // String,
-                startDate : eventData.startDate, // Date,
-                startHour : eventData.startHour, // Date,
-                endDate : eventData.endDate, // Date,
-                endHour : eventData.endHour, // Date,
+                startDate : Date(eventData.startDate), // Date,
+                startHour : Date(eventData.startHour), // Date,
+                endDate : Date(eventData.endDate), // Date,
+                endHour : Date(eventData.endHour), // Date,
                 // instructions : '', // String,
                 // isDeleted : '', // String,
                 // deleter : null, // { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
