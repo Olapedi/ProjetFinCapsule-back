@@ -38,7 +38,7 @@ module.exports = async function newEvent(eventData) {
 
             // TODO : faire la vérification que le uvUid n'existe pas déjà dans la base
             // avec un "while"
-            let evtUid = generateuid("evt")
+            let evtUid = await generateuid("evt")
 
             // sous-document occurences
             const occurences = {
