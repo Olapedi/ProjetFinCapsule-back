@@ -5,7 +5,7 @@
 { "code" : "pro", "collection" : "profiles" },  
 { "code" : "pla", "collection" : "plans" },
 { "code" : "leg", "collection" : "legalinfos" },  
-{ "code" : "cir", "collection" : "users" },  
+{ "code" : "cir", "collection" : "circles" },  
 { "code" : "crq", "collection" : "circlerequests" },
 { "code" : "evt", "collection" : "events"}
 
