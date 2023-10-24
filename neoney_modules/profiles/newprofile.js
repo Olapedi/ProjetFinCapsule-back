@@ -24,7 +24,15 @@ const checkbodynewprofile = require('./checkbodynewprofile')
 const checkuseruid = require('../../neoney_modules/_common/checkuseruid');
 const Profile = require('../../models/profiles');
 
+const generateuid = require('../../neoney_modules/_common/generateuid');
+
 // Function
+
+
+const test = generateuid('evt');
+
+console.log(test)
+
 
 module.exports = async function newprofile(profiledata) {
   
@@ -63,6 +71,10 @@ module.exports = async function newprofile(profiledata) {
     const isCloser = false;
     const isDeleted = false;
 
+    const proUid = await generateprouid();
+
+    console.log(proUid);
+
     //Information de Carte de visite
 
     const displayName = profiledata[0].displayName;
@@ -78,6 +90,7 @@ module.exports = async function newprofile(profiledata) {
 
       owner : owner,
       useUid : useUid,
+      proUid : proUid,
       creationDate : creationDate,
       label : label,
       countries : countries,
@@ -108,7 +121,6 @@ module.exports = async function newprofile(profiledata) {
     })
 
     const newitem = await newProfile.save();
-
 
    
     return newitem;

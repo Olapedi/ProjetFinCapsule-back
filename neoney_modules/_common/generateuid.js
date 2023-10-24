@@ -2,15 +2,23 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../../models/users');
+const uidcollection = require('../../neoney_datas/uidcollections.json')
 
 // Authentication tools
 const uid2 = require ('uid2');
 const bcrypt = require('bcrypt');
 
 
-module.exports = async function generateprouid () {
+module.exports = function generateuid (param) {
 
-    let randomNbr = Math.floor(Math.random() * 9000) + 1000;
+  const datacollection = uidcollection.filter((e) => e.code == param)
+
+  const prefix = param;
+  const collection = datacollection[0].collection;
+
+  function generate() {
+
+    let randomNbr = Math.floor(Math.random() * 90000) + 10000;
     let date = new Date();
   
     let year = date.getFullYear();
@@ -31,8 +39,16 @@ module.exports = async function generateprouid () {
   
       }
       
-    let proUid = `pro${year}${month}${day}${randomNbr}`;
+   return`${param}${year}${month}${day}${randomNbr}`;
 
-    return proUid;
+
+  }
+  
+  const Uid = generate();
+
+  
+
+
+    return Uid;
   
   }

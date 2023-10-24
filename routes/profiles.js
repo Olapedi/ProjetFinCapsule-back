@@ -47,8 +47,6 @@ router.post('/new', async (req, res) => {
 
   }]
 
-  console.log(datareceived[0].displayName);
-  
   const checkresult = await checkbodynewprofile(datareceived[0]);
 
   if (checkresult[0].result) {
@@ -62,9 +60,7 @@ router.post('/new', async (req, res) => {
 
   }
 
-  
-
-  
   });
 
+  
 module.exports = router;
