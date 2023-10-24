@@ -4,7 +4,7 @@ const results = require("../../neoney_results/results_events.json");
 // Fonction Helper pour traiter les requêtes depuis la route events/:evUid
 // Prend 1 argument :
 //  - evUid : correspond aux informations provenant du front reçues par le back
-module.exports = async function getEventFromEvUid(evUid) {
+module.exports = async function getEventFromEvUid(evtUid) {
     // Initilisation de la variable stockant les objets à renvoyer
     // 2 objets à priori :
     //    - message technique standardisé (objet avec 3 propriétés : id, message, result)
@@ -12,8 +12,8 @@ module.exports = async function getEventFromEvUid(evUid) {
     let result = [];
 
     // Récupération de l'événement en base
-    let searchedEvent = await Event.findOne({evUid}); // on reçoit null si rien n'a été trouvé
-    console.log(evUid, searchedEvent)
+    let searchedEvent = await Event.findOne({evtUid}); // on reçoit null si rien n'a été trouvé
+    console.log(evtUid, searchedEvent)
     if (searchedEvent) {
         result.push(results[4]);
         result.push(searchedEvent);
