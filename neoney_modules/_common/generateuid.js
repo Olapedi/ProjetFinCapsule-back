@@ -9,7 +9,7 @@ const uid2 = require ('uid2');
 const bcrypt = require('bcrypt');
 
 
-module.exports = function generateuid (param) {
+module.exports = async function generateuid (param) {
 
   const datacollection = uidcollection.filter((e) => e.code == param)
 
@@ -46,7 +46,8 @@ module.exports = function generateuid (param) {
   
   const Uid = generate();
 
-  
+
+
 
 
     return Uid;

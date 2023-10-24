@@ -23,16 +23,9 @@ const generateprouid = require('./generateprouid');
 const checkbodynewprofile = require('./checkbodynewprofile')
 const checkuseruid = require('../../neoney_modules/_common/checkuseruid');
 const Profile = require('../../models/profiles');
-
 const generateuid = require('../../neoney_modules/_common/generateuid');
 
 // Function
-
-
-const test = generateuid('evt');
-
-console.log(test)
-
 
 module.exports = async function newprofile(profiledata) {
   
@@ -71,7 +64,7 @@ module.exports = async function newprofile(profiledata) {
     const isCloser = false;
     const isDeleted = false;
 
-    const proUid = await generateprouid();
+    const proUid = await generateuid('pro');
 
     console.log(proUid);
 
