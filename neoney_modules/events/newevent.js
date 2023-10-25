@@ -21,7 +21,7 @@ module.exports = async function newEvent(eventData) {
 
         // Exploitation conditionnelle du résultat
         if (!checkUserTokenResult[0].result) {
-            result.push(checkUserTokenResult)
+            result.push(...checkUserTokenResult)
             return result
         } else if (!checkUserTokenResult[1].isActivated) {
             result.push(results[0])
