@@ -8,7 +8,9 @@ var fetch = require('node-fetch');
 const results = require('../neoney_results/results_boosts.json');
 const checkuseruid = require('../neoney_modules/_common/checkuseruid');
 const checkbodynewboost = require('../neoney_modules/boosts/checkbodynewboost');
-const getboosts = require('../neoney_modules/boosts/getboosts')
+const getboosts = require('../neoney_modules/boosts/getboosts');
+const getprofiles = require('../neoney_modules/profiles/getprofiles');
+const newboost = require('../neoney_modules/boosts/newboost');
 
 /* Lister tous les boosts de la base */
 
@@ -74,19 +76,21 @@ router.post('/new', async (req, res) => {
 
   }]
 
-      const checkresult = await checkbodynewboost(datareceived[0]);
+  const checkresult = await checkbodynewboost(datareceived[0]); // Vérifier si tous les champs ont bien été renseignés
 
-      if (checkresult[0].result) {
+
+  if (checkresult[0].result) { // Tous les champs sont remplis
+
+        const result = await newboost(datareceived) // Appel de la fonction de création du boost
         
-        const result = await newboost(datareceived);
-
         res.json(result);
 
-      } else {
+        } else { // Tous les champs ne sont pas remplis
         
         res.json(checkresult);
 
       }
+
 
   });
 
