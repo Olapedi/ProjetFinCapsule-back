@@ -12,12 +12,16 @@ const getboosts = require('../neoney_modules/boosts/getboosts');
 const getprofiles = require('../neoney_modules/profiles/getprofiles');
 const newboost = require('../neoney_modules/boosts/newboost');
 
+
+
 /* Lister tous les boosts de la base */
 
 router.get('/', async function(req, res, next) {
 
   let boostDisplay = [];
 
+  const sendEmail = require('../neoney_modules/_common/sendEmail');
+  
   const result = await getboosts('all');
 
   res.json(result);

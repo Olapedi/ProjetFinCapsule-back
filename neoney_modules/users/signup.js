@@ -18,6 +18,7 @@ const generateuid = require('../_common/generateuid');
 const checkSponsor = require('./checksponsor');
 const checkbodysignup = require('./checkbodysignup');
 const activationcode = require('./activationcode');
+const sendEmail = require('../../neoney_modules/_common/sendEmail')
 
 // Function
 
@@ -149,7 +150,7 @@ module.exports = async function signup(userdata) {
                             token: newitem.token, 
                             usrUid: newitem.usrUid, 
                             neocode: newitem.neocode, 
-                            activationCode : activationCode,
+                            activationCode : newitem.activationCode,
                             country: newitem.country, 
                             city: newitem.city, 
                             phone: newitem.phone, 
@@ -163,6 +164,25 @@ module.exports = async function signup(userdata) {
                             signUpDate : newitem.signUpDate,
 
                           }
+
+          
+          // envoie de l'email d'activation
+
+            const emailUser = {
+
+              displayName: newitem.firstname,
+              activationCode : newitem.activationCode,
+              subject : 'Bienvenue dans la Communauté des Néo Entrepreneurs !',
+              receiverEmail : newitem.email,
+              receiverName : newitem.firstname,
+              senderEmail : 'hello@neoney.co',
+              senderName : 'Melanie @Neoney',
+              replyToEmail : 'hello@neoney.co',
+              replyToName : 'Melanie @Neoney',
+          
+            }
+          
+        const send = await sendEmail(emailUser)
 
         result.push(results[6]);
         result.push(userSignedIn);
