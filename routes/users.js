@@ -11,7 +11,8 @@ const signup = require('../neoney_modules/users/signup');
 const activateuser = require('../neoney_modules/users/activateuser');
 const newprofile = require('../neoney_modules/profiles/newprofile');
 const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile');
-const getusers = require('../neoney_modules/users/getusers')
+const getusers = require('../neoney_modules/users/getusers');
+const checkbodysignup = require('../neoney_modules/users/checkbodysignup');
 
 /* Lister tous les utilisateurs de la base */
 
@@ -68,16 +69,29 @@ router.post('/signup', async (req, res) => {
     country : req.body.country,
     city : req.body.city,
     phone : req.body.phone,
-    sponsor : req.body.sponsor,
-
+    sponsor : req.body.sponsor
 
   }]
   
-  const result = await signup(datareceived);
+
+  const resultcheck = await checkbodysignup(datareceived[0]); // Vérifier que les données ne sont pas vides
+
+  if (resultcheck[0].result) { // Tous les champs sont remplis
+
+    const result = await signup(datareceived);
   
-  res.json(result);
+    res.json(result);
+
+  } else { // Certains champs ne sont pas remplis 
+
+    res.json(resultcheck);
+
+  }
+
+
   
-  });
+});
+
 
 // Activation de l'utilisateur après son inscription et création du premier profil
 

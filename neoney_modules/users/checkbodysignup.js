@@ -17,77 +17,163 @@ module.exports = async function checkbodysignup(userdata2){
 
     let result = [];
 
-      // Initialisation des données à vérifier 
+        if (userdata2.firstname !== undefined) {
 
-      if (userdata2.firstname == '') {
+          if (userdata2.firstname == '') {
 
-        result.push(results[9]);
-        return result;
+            result.push(results[9]);
+            return result;
 
-      } 
+          } 
 
-      if (userdata2.lastname == '') {
+        } else {
 
-        result.push(results[10]);
-        return result;
 
-      }
+          result.push(results[26]);
+          return result;
 
-      if (userdata2.email == '') {
+        }
 
-        result.push(results[11]);
-        return result;
 
-      }
+        if (userdata2.lastname !== undefined) {
 
-      if (userdata2.password == '') {
+          if (userdata2.lastname == '') {
 
-        result.push(results[12]);
-        return result;
+            result.push(results[10]);
+            return result;
 
-      }
+          }
 
-      if (userdata2.country == '') {
+        } else {
 
-        result.push(results[13]);
-        return result;
 
-      }
+          result.push(results[27]);
+          return result;
 
-      if (userdata2.city == '') {
 
-        result.push(results[14]);
-        return result;
+        }
 
-      }
 
-      if (userdata2.phone == '') {
 
-        result.push(results[15]);
-        return result;
+        if (userdata2.email !== undefined) {
 
-      }
 
-      if (userdata2.sponsor == '') {
+          if (userdata2.email == '') {
 
-        result.push(results[16]);
-        return result;
+            result.push(results[11]);
+            return result;
 
-      }
+          }
 
-      if (userdata2.token == '') {
+        } else {
 
-        result.push(results[18]);
-        return result;
 
-      }
+          result.push(results[28]);
+          return result;
 
-      if (userdata2.hash == '') {
 
-        result.push(results[19]);
-        return result;
+        }
 
-      }
+
+        if (userdata2.password !== undefined) {
+
+
+          if (userdata2.password == '') {
+
+            result.push(results[12]);
+            return result;
+
+          }
+
+        } else {
+
+
+          result.push(results[29]);
+          return result;
+
+
+        }
+
+
+
+        if (userdata2.country !== undefined) {
+
+          if (userdata2.country == '') {
+
+            result.push(results[13]);
+            return result;
+
+          }
+
+        } else {
+
+
+          result.push(results[30]);
+          return result;
+
+
+        }
+
+
+        if (userdata2.city !== undefined) {
+
+          if (userdata2.city == '') {
+
+            result.push(results[14]);
+            return result;
+
+          }
+
+
+        } else {
+
+
+          result.push(results[31]);
+          return result;
+
+
+        }
+
+
+        if (userdata2.phone !== undefined) {
+
+          if (userdata2.phone == '') {
+
+            result.push(results[15]);
+            return result;
+
+          }
+
+
+        } else {
+
+
+          result.push(results[32]);
+          return result;
+
+
+        }
+
+        if (userdata2.sponsor !== undefined) {
+
+
+          if (userdata2.sponsor == '') {
+
+            result.push(results[16]);
+            return result;
+
+          }
+
+
+        } else {
+
+
+          result.push(results[33]);
+          return result;
+
+
+        }
+
 
       result.push(results[17]);
       return result;

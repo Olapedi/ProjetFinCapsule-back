@@ -27,9 +27,6 @@ const email = {
 
 }
 
-
-console.log(email);
-
 sendSmtpEmail.subject = "{{params.subject}}";
 
 sendSmtpEmail.htmlContent = `<html>
@@ -75,10 +72,19 @@ sendSmtpEmail.params = { "parameter": email.displayName, "subject": email.subjec
 
 
 apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+
+
+  const result = ('API called successfully. Returned data: ' + JSON.stringify(data));
+  console.log(result);
+
+  return result;
 
 }, function (error) {
+
   console.error(error);
+
+  return error;
+  
 });
 
 }

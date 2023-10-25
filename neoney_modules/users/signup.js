@@ -26,7 +26,7 @@ module.exports = async function signup(userdata) {
 
   let result = [];
 
-  const activationCode = activationcode();
+  const activCode = activationcode(); // Génération du code d'activation du compte utilisateur
 
   const firstname = userdata[0].firstname.trim();
   const lastname = userdata[0].lastname.trim();
@@ -38,7 +38,7 @@ module.exports = async function signup(userdata) {
   const city = userdata[0].city.trim();
   const phone = userdata[0].phone.trim();
   const sponsor = userdata[0].sponsor.trim();
-  const usrUid = await generateuid('usr');
+  const usrUid = await generateuid('usr'); // Génération de l'Uid pour l'utilisateur
   const neocode = usrUid;
   const isCountryLimited = true;
   const isCityLimited = true;
@@ -48,44 +48,15 @@ module.exports = async function signup(userdata) {
   const isCertified = false;
   const signUpDate = new Date;
 
-  // Vérifier si les données reçues sont vides 
-
-  const userdata2 = {
-
-    firstname : firstname,
-    lastname : lastname,
-    email : email,
-    password : password,
-    hash : hash,
-    token : token,
-    country : country,
-    city : city,
-    phone : phone,
-    sponsor : sponsor,
-    usrUid : usrUid,
-    neocode : neocode,
-  
-  }
-  
-  const checkbodyresult = await checkbodysignup(userdata2);
-
-  if (!checkbodyresult[0].result) {
-
-    // Un des champs est vide
-
-    return checkbodyresult;
-
-  } else {
-
-    // Tous les champs sont remplis. Vérification de l'existence du sponsor dans la base.
+  // Vérification de l'existence du sponsor dans la base.
   
   const validSponsor = await checkSponsor(sponsor);
 
   if (validSponsor) {
 
-    // Si le sponsor existe, vérification du format de l'email reçu
+  // Si le sponsor existe, vérification du format de l'adresse email reçue
 
-    const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+  const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
   
   function validateEmail(email) {
     return emailRegex.test(email);
@@ -93,16 +64,12 @@ module.exports = async function signup(userdata) {
   
   const isValidEmail = validateEmail(email);
   
-  if (!isValidEmail) {
-    
-    // Format email invalide
+  if (!isValidEmail) { // Format email invalide
 
     result.push(results[0]);
     return result;
 
-  } else {
-
-    // Format email valide. Recherche de l'existence de l'utilisateur dans la base pour éviter de le créer 2 fois
+  } else { // Format email valide. Recherche de l'existence de l'utilisateur dans la base pour éviter de le créer 2 fois
 
     const data = await User.findOne({email: {$regex: new RegExp(email, 'i')}});
     const dataphone = await User.findOne({phone: {$regex: new RegExp(phone, 'i')}});
@@ -127,7 +94,7 @@ module.exports = async function signup(userdata) {
         sponsor : sponsor,
         usrUid : usrUid,
         neocode : neocode,
-        activationCode : activationCode,
+        activationCode : activCode,
         isCountryLimited : isCountryLimited,
         isCityLimited : isCityLimited,
         isJobLimited : isJobLimited,
@@ -186,12 +153,13 @@ module.exports = async function signup(userdata) {
 
         result.push(results[6]);
         result.push(userSignedIn);
+        
         return result;
 
        } else {
 
         result.push(results[7])
-        return result;
+        return result; 
 
        }
 
@@ -202,11 +170,9 @@ module.exports = async function signup(userdata) {
   } else {
 
     result.push(results[8])
-    return result;
+    return result; 
 
   }
-
-}
 
 }
     
