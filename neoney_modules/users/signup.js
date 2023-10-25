@@ -12,17 +12,11 @@ const bcrypt = require('bcrypt');
 
 const results = require('../../neoney_results/results_users.json');
 
-// Import Neoney Data
-
-const countries = require('../../neoney_datas/countries.json');
-const uidcollections = require('../../neoney_datas/uidcollections.json');
-
 // Import Neoney Modules
 
-const generateuseuid = require('./generateuseuid');
+const generateuid = require('../_common/generateuid');
 const checkSponsor = require('./checksponsor');
 const checkbodysignup = require('./checkbodysignup');
-const activationCode = require('./activationcode');
 const activationcode = require('./activationcode');
 
 // Function
@@ -43,8 +37,8 @@ module.exports = async function signup(userdata) {
   const city = userdata[0].city.trim();
   const phone = userdata[0].phone.trim();
   const sponsor = userdata[0].sponsor.trim();
-  const useUid = generateuseuid();
-  const neocode = `TMP${useUid}`;
+  const usrUid = await generateuid('usr');
+  const neocode = usrUid;
   const isCountryLimited = true;
   const isCityLimited = true;
   const isJobLimited = true;
@@ -67,7 +61,7 @@ module.exports = async function signup(userdata) {
     city : city,
     phone : phone,
     sponsor : sponsor,
-    useUid : useUid,
+    usrUid : usrUid,
     neocode : neocode,
   
   }
@@ -130,7 +124,7 @@ module.exports = async function signup(userdata) {
         city : city,
         phone : phone,
         sponsor : sponsor,
-        useUid : useUid,
+        usrUid : usrUid,
         neocode : neocode,
         activationCode : activationCode,
         isCountryLimited : isCountryLimited,
@@ -153,7 +147,7 @@ module.exports = async function signup(userdata) {
                             lastname: newitem.lastname, 
                             email: newitem.email, 
                             token: newitem.token, 
-                            useUid: newitem.useUid, 
+                            usrUid: newitem.usrUid, 
                             neocode: newitem.neocode, 
                             activationCode : activationCode,
                             country: newitem.country, 

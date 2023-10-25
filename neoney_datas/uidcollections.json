@@ -1,6 +1,6 @@
 [
 
-{ "code" : "use", "collection" : "users" },
+{ "code" : "usr", "collection" : "users" },
 { "code" : "aff", "collection" : "affiliates" },  
 { "code" : "pro", "collection" : "profiles" },  
 { "code" : "pla", "collection" : "plans" },

@@ -17,9 +17,21 @@ const activateuser = require('../neoney_modules/users/activateuser');
 const newprofile = require('../neoney_modules/profiles/newprofile');
 const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile');
 const checkuseruid = require('../neoney_modules/_common/checkuseruid');
+const getusers = require('../neoney_modules/users/getusers')
 
 /* Lister tous les utilisateurs de la base */
 
+router.get('/', async function(req, res, next) {
+
+  let userDisplay = [];
+
+  const result = await getusers('all');
+
+  res.json(result);
+
+});
+
+/*
 router.get('/', function(req, res, next) {
 
   let userDisplay = [];
@@ -27,7 +39,7 @@ router.get('/', function(req, res, next) {
   User.find().then((data) => {
 
     data.map((item) => {
-      console.log(item)
+
       userDisplay.push({
         
         firstname: item.firstname, 
@@ -58,7 +70,11 @@ router.get('/', function(req, res, next) {
 
 });
 
+*/
+
+
 //Rechercher un utilisateur par son Uid
+
 router.get('/:useUid', (req,res) =>{
   const data = checkuseruid(req.params.useUid)
   res.json({data})
@@ -96,11 +112,11 @@ router.post('/signup', async (req, res) => {
     phone : req.body.phone,
     sponsor : req.body.sponsor,
 
+
   }]
   
   const result = await signup(datareceived);
   
-  console.log(result)
   res.json(result);
   
   });

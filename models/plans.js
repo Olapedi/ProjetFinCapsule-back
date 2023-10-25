@@ -3,32 +3,32 @@ const mongoose = require('mongoose');
 
 const prices = mongoose.Schema ({
 
-    uid : Number,
-    label : String,
-    title : String,
-    amount : Number,
-    cv : Number,
-    qv : Number,
-    qp : Number,
-    frequency : Number,
-    priority : Number,
-    isDeleted : Boolean,
+    prUid : Number,
+    prLabel : String,
+    prTitle : String,
+    prAmount : Number,
+    prCv : Number,
+    prQv : Number,
+    prQp : Number,
+    prFrequency : Number,
+    prPriority : Number,
+    prIsDeleted : Boolean,
 
 })
 
 const coupons = mongoose.Schema ({
     
-    uid : Number,
-    label : String, 
-    code : String,
-    expDate : Date,
-    price : Number,
-    cv : Number,
-    qv : Number,
-    qp : Number,
-    quantity : Number,
-    isExpired : Boolean,
-    isDeleted : Boolean
+    cpUid : Number,
+    cpLabel : String, 
+    cpCode : String,
+    cpExpDate : Date,
+    cpPrice : Number,
+    cpCv : Number,
+    cpQv : Number,
+    cpQp : Number,
+    cpQuantity : Number,
+    cpIsExpired : Boolean,
+    cpIsDeleted : Boolean
 
 })
 

@@ -14,19 +14,20 @@ const results = require('../neoney_results/results_profiles.json');
 const newprofile = require('../neoney_modules/profiles/newprofile');
 const checkuseruid = require('../neoney_modules/_common/checkuseruid');
 const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile');
+const getprofiles = require('../neoney_modules/profiles/getprofiles')
+
+
+/* Lister tous les profils de la base */
 
 router.get('/', async function(req, res, next) {
 
-  const result = await checkuseruid('202310221403');
+  let profileDisplay = [];
+
+  const result = await getprofiles('all');
+
   res.json(result);
 
 });
-
-router.get('/:proUid', (req,res)=>{
-
-})
-
-module.exports = router;
 
 // Créer un nouveau profil 
 

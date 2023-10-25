@@ -11,7 +11,7 @@ const lastlogins = mongoose.Schema({
 
 const userSchema = mongoose.Schema({
 
-    useUid : String,
+    usrUid : String,
     neocode : String,
     activationCode : String,
     token : String,

@@ -38,7 +38,7 @@ if (!isValidEmail) {
 
 } else {
 
- let data = await User.findOne({email: {$regex: new RegExp(email, 'i')}}) 
+ let data = await User.findOne({email: {$regex: new RegExp(email, 'i')}})
   
     if (data == null) {
 
@@ -59,10 +59,10 @@ if (!isValidEmail) {
         let userSignedIn = {
                     
                       firstname: data.firstname, 
-                      lastname: data.lastname, 
+                      lastname: data.lastname,
                       email: data.email, 
                       token: data.token, 
-                      useUid: data.useUid, 
+                      usrUid: data.usrUid, 
                       neocode: data.neocode, 
                       country: data.country, 
                       city: data.city, 

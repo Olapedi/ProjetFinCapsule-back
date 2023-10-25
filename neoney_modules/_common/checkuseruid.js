@@ -15,18 +15,18 @@ const results = require('../../neoney_results/results_users.json')
 
 // Function
 
-module.exports = async function checkuseruid(useUid){
+module.exports = async function checkuseruid(usrUid){
 
     let result = [];
 
       // Vérification de l'existance de l'utilisateur dans la base
 
-      const data = await User.findOne({useUid: useUid});
+      const data = await User.findOne({usrUid: usrUid});
   
       if (data == null) {
   
         // La recherche n'a renvoyé aucun résultat. L'utilisateur n'existe pas.
-        const user = {useUid: useUid};
+        const user = {usrUid: usrUid};
 
         result.push(results[1]);
         result.push(user);
@@ -44,7 +44,7 @@ module.exports = async function checkuseruid(useUid){
           lastname: data.lastname, 
           email: data.email, 
           token: data.token, 
-          useUid: data.useUid, 
+          usrUid: data.usrUid, 
           neocode: data.neocode, 
           country: data.country, 
           city: data.city, 
