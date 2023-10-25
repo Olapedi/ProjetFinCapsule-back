@@ -46,25 +46,24 @@ module.exports = async function getboosts(param){
         if (data == null) {
 
         // La recherche n'a renvoyé aucun résultat. Le boost n'existe pas.
+
         const boost = {bstUid: param};
 
-        result.push(results[4]);
-        result.push(profile);
+        result.push(results[5]);
+        result.push(boost);
 
         return result;
 
         } else {
 
-        // La recherche a renvoyé un résultat. Le profil existe.
+        // La recherche a renvoyé un résultat. Le boost existe.
         
-        result.push(results[25]);
+        result.push(results[6]);
         result.push(data);
 
         return result;
 
         }
-
-
 
     }
 
