@@ -25,6 +25,7 @@
     { "id": 23, "message" : "Des profils ont été trouvés", "result": true},
     { "id": 24, "message" : "Tous les champs ont été remplis", "result": true},
     { "id": 25, "message" : "Le profil a été trouvé", "result": true},
-    { "id": 26, "message" : "Le profil n'a pas été trouvé", "result": false}
+    { "id": 26, "message" : "Le profil n'a pas été trouvé", "result": false},
+    { "id": 27, "message" : "Vous n'avez aucun profil pour le moment", "result": false}
 
   ]

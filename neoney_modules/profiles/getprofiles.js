@@ -16,7 +16,7 @@ module.exports = async function getprofiles(param){
 
     if (param == 'all') {
 
-        const data = await Profile.find();
+        const data = await Profile.find().populate('owner');
       
         if (data.length == 0) {
 
@@ -42,7 +42,7 @@ module.exports = async function getprofiles(param){
 
         // Vérification de l'existance du profil dans la base
 
-        const data = await Profile.findOne({proUid: param});
+        const data = await Profile.findOne({proUid: param}).populate('owner');
 
         if (data == null) {
 

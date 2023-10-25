@@ -14,7 +14,6 @@ const results = require('../../neoney_results/results_profiles.json');
 
 // Import Neoney Modules
 
-const generateprouid = require('./generateprouid');
 const checkbodynewprofile = require('./checkbodynewprofile')
 const checkuseruid = require('../../neoney_modules/_common/checkuseruid');
 const Profile = require('../../models/profiles');
@@ -110,9 +109,7 @@ module.exports = async function newprofile(profiledata) {
 
     const newitem = await newProfile.save();
 
-   
     return newitem;
-
 
   }
 
