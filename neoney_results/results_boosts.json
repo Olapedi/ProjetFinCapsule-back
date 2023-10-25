@@ -1,0 +1,23 @@
+[
+    { "id": 0, "message" : "Aucun boost n'a encore été créé", "result": false},
+    { "id": 1, "message" : "Le boost a été ajouté", "result": true},
+    { "id": 2, "message" : "Le like du boost a été ajouté", "result": true},
+    { "id": 3, "message" : "Le like du boost a été enlevé", "result": true},
+    { "id": 4, "message" : "Des boosts ont été trouvés", "result": true},
+    { "id": 4, "message" : "Le boost n'a pas été trouvé", "result": false},
+    { "id": 5, "message" : "", "result": false},
+    { "id": 6, "message" : "", "result": true},
+    { "id": 7, "message" : "", "result": false},
+    { "id": 8, "message" : "", "result": false},
+    { "id": 9, "message" : "", "result": false},
+    { "id": 10, "message" : "", "result": false},
+    { "id": 11, "message" : "", "result": false},
+    { "id": 12, "message" : "", "result": false},
+    { "id": 13, "message" : "", "result": false},
+    { "id": 14, "message" : "", "result": false},
+    { "id": 15, "message" : "", "result": false},
+    { "id": 16, "message" : "", "result": false},
+    { "id": 17, "message" : "", "result": true},
+    { "id": 18, "message" : "", "result": false},
+    { "id": 19, "message" : "", "result": false}
+  ]

@@ -1,32 +1,31 @@
-
 var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
-const Profile = require('../../models/profiles')
+const Boost = require('../../models/boosts')
 
 // Import Project Modules
 
-const results = require('../../neoney_results/results_profiles.json')
+const results = require('../../neoney_results/results_boosts.json')
 
 // Function
 
-module.exports = async function getprofiles(param){
+module.exports = async function getboosts(param){
 
     let result = [];
 
     if (param == 'all') {
 
-        const data = await Profile.find().populate('owner');
+        const data = await Boost.find();
       
         if (data.length == 0) {
 
-        result.push(results[22])
+        result.push(results[0])
 
         return result;
 
         } else {
         
-        result.push(results[23])
+        result.push(results[4])
 
         data.map((item) => {
 
@@ -39,17 +38,17 @@ module.exports = async function getprofiles(param){
         }
 
     } else {
+        
+        // Vérification de l'existance du boost dans la base
 
-        // Vérification de l'existance du profil dans la base
-
-        const data = await Profile.findOne({proUid: param}).populate('owner');
+        const data = await Boost.findOne({bstUid: param});
 
         if (data == null) {
 
-        // La recherche n'a renvoyé aucun résultat. Le profil n'existe pas.
-        const profile = {proUid: param};
+        // La recherche n'a renvoyé aucun résultat. Le boost n'existe pas.
+        const boost = {bstUid: param};
 
-        result.push(results[26]);
+        result.push(results[4]);
         result.push(profile);
 
         return result;
@@ -63,11 +62,12 @@ module.exports = async function getprofiles(param){
 
         return result;
 
-    }
+        }
 
 
 
     }
 
 }
+
 

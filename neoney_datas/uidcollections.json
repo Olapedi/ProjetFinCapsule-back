@@ -7,6 +7,8 @@
 { "code" : "leg", "collection" : "legalinfos" },  
 { "code" : "cir", "collection" : "circles" },  
 { "code" : "crq", "collection" : "circlerequests" },
-{ "code" : "evt", "collection" : "events"}
+{ "code" : "evt", "collection" : "events"},
+{ "code" : "bst", "collection" : "boosts"},
+{ "code" : "alt", "collection" : "alerts"}
 
 ]

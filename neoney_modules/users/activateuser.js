@@ -89,7 +89,6 @@ module.exports = async function activateuser(userreceived){
             result.push(results[22]);
             result.push(data2);
 
-
         }
 
       } else {
