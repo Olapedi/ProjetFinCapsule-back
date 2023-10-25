@@ -12,11 +12,6 @@ const bcrypt = require('bcrypt');
 
 const results = require('../../neoney_results/results_profiles.json');
 
-// Import Neoney Data
-
-const countries = require('../../neoney_datas/countries.json');
-const uidcollections = require('../../neoney_datas/uidcollections.json');
-
 // Import Neoney Modules
 
 const generateprouid = require('./generateprouid');
@@ -24,6 +19,7 @@ const checkbodynewprofile = require('./checkbodynewprofile')
 const checkuseruid = require('../../neoney_modules/_common/checkuseruid');
 const Profile = require('../../models/profiles');
 const generateuid = require('../../neoney_modules/_common/generateuid');
+const random = require('../../neoney_modules/_common/random')
 
 // Function
 
@@ -33,11 +29,11 @@ module.exports = async function newprofile(profiledata) {
 
   // Informations de l'utilisateur
 
-  const user = await checkuseruid(profiledata[0].useUid);
+  const user = await checkuseruid(profiledata[0].usrUid);
 
   if (user[0].result) {
 
-    const useUid = profiledata[0].useUid;
+    const usrUid = profiledata[0].usrUid;
     const owner = user[1].id;
 
     let countries = [];
@@ -66,8 +62,6 @@ module.exports = async function newprofile(profiledata) {
 
     const proUid = await generateuid('pro');
 
-    console.log(proUid);
-
     //Information de Carte de visite
 
     const displayName = profiledata[0].displayName;
@@ -82,7 +76,7 @@ module.exports = async function newprofile(profiledata) {
     const newProfile = new Profile({
 
       owner : owner,
-      useUid : useUid,
+      usrUid : usrUid,
       proUid : proUid,
       creationDate : creationDate,
       label : label,
@@ -97,9 +91,10 @@ module.exports = async function newprofile(profiledata) {
       isCoach : isCoach,
       isCloser : isCloser,
       isDeleted : isDeleted,
+
       cards : {
 
-        uid : 0,
+        uid : random(),
         displayName : displayName,
         title : title,
         organization : organization,
@@ -140,7 +135,7 @@ module.exports = async function newprofile(profiledata) {
     website : website,
     phone : phone,
     email : email,
-    useUid : useUid
+    usrUid : usrUid
   
   }
   
@@ -204,7 +199,7 @@ module.exports = async function newprofile(profiledata) {
         city : city,
         phone : phone,
         sponsor : sponsor,
-        useUid : useUid,
+        usrUid : usrUid,
         neocode : neocode,
         isCountryLimited : isCountryLimited,
         isCityLimited : isCityLimited,
@@ -226,7 +221,7 @@ module.exports = async function newprofile(profiledata) {
                             lastname: newitem.lastname, 
                             email: newitem.email, 
                             token: newitem.token, 
-                            useUid: newitem.useUid, 
+                            usrUid: newitem.usrUid, 
                             neocode: newitem.neocode, 
                             country: newitem.country, 
                             city: newitem.city, 

@@ -22,7 +22,9 @@
     { "id": 20, "message" : "Le champ 'useUid' est vide", "result": false},
     { "id": 21, "message" : "Le champ 'useUid' est manquant", "result": false},
     { "id": 22, "message" : "Aucun profil n'a été trouvé", "result": false},
-    { "id": 23, "message" : "Des profils ont été trouvés", "result": true}
+    { "id": 23, "message" : "Des profils ont été trouvés", "result": true},
+    { "id": 24, "message" : "Tous les champs ont été remplis", "result": true}
+
 
 
   ]

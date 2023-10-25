@@ -162,9 +162,9 @@ module.exports = async function checkbodynewprofile(userdata2){
       }
 
 
-      if (userdata2.useUid !== undefined) {
+      if (userdata2.usrUid !== undefined) {
 
-        if (userdata2.useUid == '') {
+        if (userdata2.usrUid == '') {
 
           result.push(results[20]);
           return result;
@@ -178,7 +178,7 @@ module.exports = async function checkbodynewprofile(userdata2){
 
       }
 
-      result.push(results[22]);
+      result.push(results[24]);
       return result;
 
 }

@@ -24,12 +24,12 @@ module.exports = async function activateuser(userreceived){
 
       // Vérification de l'existance de l'utilisateur dans la base
 
-      const data = await User.findOne({useUid: userreceived.useUid});
+      const data = await User.findOne({usrUid: userreceived.usrUid});
   
       if (data == null) {
   
         // La recherche n'a renvoyé aucun résultat. L'utilisateur n'existe pas.
-        const user = {useUid: userreceived.useUid};
+        const user = {usrUid: userreceived.usrUid};
 
         result.push(results[1]);
         result.push(user);
@@ -47,7 +47,7 @@ module.exports = async function activateuser(userreceived){
           lastname: data.lastname, 
           email: data.email, 
           token: data.token, 
-          useUid: data.useUid, 
+          usrUid: data.usrUid, 
           neocode: data.neocode,
           activationCode : data.activationCode, 
           country: data.country, 
@@ -79,12 +79,12 @@ module.exports = async function activateuser(userreceived){
 
         await  User.updateOne(
 
-                    { useUid: user.useUid },
+                    { usrUid: user.usrUid },
                     { isActivated: true }
 
                 )
         
-        const data2 = await User.findOne({useUid: userreceived.useUid});
+        const data2 = await User.findOne({usrUid: userreceived.usrUid});
         
             result.push(results[22]);
             result.push(data2);

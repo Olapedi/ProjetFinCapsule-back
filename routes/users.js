@@ -46,7 +46,7 @@ router.get('/', function(req, res, next) {
         lastname: item.lastname, 
         email: item.email, 
         token: item.token, 
-        useUid: item.useUid, 
+        usrUid: item.usrUid, 
         neocode: item.neocode, 
         country: item.country, 
         city: item.city, 
@@ -75,8 +75,8 @@ router.get('/', function(req, res, next) {
 
 //Rechercher un utilisateur par son Uid
 
-router.get('/:useUid', (req,res) =>{
-  const data = checkuseruid(req.params.useUid)
+router.get('/:usrUid', (req,res) =>{
+  const data = checkuseruid(req.params.usrUid)
   res.json({data})
   })
 
@@ -129,7 +129,7 @@ router.post('/activate', async (req, res) => {
 
   const userreceived = {
     
-    useUid : req.body.useUid,
+    usrUid : req.body.usrUid,
     activationCode : req.body.activationCode,
 
   }
@@ -145,7 +145,7 @@ router.post('/activate', async (req, res) => {
     website : req.body.website,
     phone : req.body.phone,
     email : req.body.email,
-    useUid : req.body.useUid
+    usrUid : req.body.usrUid
 
   }]
   
