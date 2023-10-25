@@ -29,6 +29,18 @@ router.get('/', async function(req, res, next) {
 
 });
 
+//Rechercher un profil par son Uid
+
+router.get('/:proUid', async function(req, res, next) {
+
+  let profileDisplay = [];
+
+  const result = await getprofiles(req.params.proUid);
+
+  res.json(result);
+
+});
+
 // Créer un nouveau profil 
 
 router.post('/new', async (req, res) => {

@@ -4,19 +4,13 @@ const { default: mongoose } = require('mongoose');
 var fetch = require('node-fetch');
 const User = require('../models/users');
 
-// Authentication tools
-const uid2 = require ('uid2');
-const bcrypt = require('bcrypt');
-
 // Import Project Modules
 
-const results = require('../neoney_results/results_users.json');
 const signin = require('../neoney_modules/users/signin')
 const signup = require('../neoney_modules/users/signup');
 const activateuser = require('../neoney_modules/users/activateuser');
 const newprofile = require('../neoney_modules/profiles/newprofile');
 const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile');
-const checkuseruid = require('../neoney_modules/_common/checkuseruid');
 const getusers = require('../neoney_modules/users/getusers')
 
 /* Lister tous les utilisateurs de la base */
@@ -31,54 +25,18 @@ router.get('/', async function(req, res, next) {
 
 });
 
-/*
-router.get('/', function(req, res, next) {
+//Rechercher un utilisateur par son Uid
+
+router.get('/:usrUid', async function(req, res, next) {
 
   let userDisplay = [];
 
-  User.find().then((data) => {
+  const result = await getusers(req.params.usrUid);
 
-    data.map((item) => {
-
-      userDisplay.push({
-        
-        firstname: item.firstname, 
-        lastname: item.lastname, 
-        email: item.email, 
-        token: item.token, 
-        usrUid: item.usrUid, 
-        neocode: item.neocode, 
-        country: item.country, 
-        city: item.city, 
-        phone: item.phone, 
-        sponsor: item.sponsor, 
-        isCountryLimited : item.isCountryLimited,
-        isCityLimited : item.isCityLimited,
-        isJobLimited : item.isJobLimited,
-        limitCount : item.limitCount,
-        isActivated : item.isActivated,    
-        isCertified : item.isCertified,
-        signUpDate : item.signUpDate,
-      
-      })
-
-    })
-
-    res.json(userDisplay);
-
-  })
+  res.json(result);
 
 });
 
-*/
-
-
-//Rechercher un utilisateur par son Uid
-
-router.get('/:usrUid', (req,res) =>{
-  const data = checkuseruid(req.params.usrUid)
-  res.json({data})
-  })
 
 // Connecter un utilisateur avec son adresse mail et son mot de passe 
 
