@@ -9,7 +9,10 @@ const getEventFromEvUid = require("../neoney_modules/events/getevent");
 
 // Consultation de tous les événements (pour verif pour l'instant)
 router.get("/", async (req, res) => {
-    let result = await Event.find();
+    let result = []
+    resultAwait = await Event.find();
+    result.push(results[5])
+    result.push(...resultAwait)
     res.json(result);
 });
 
