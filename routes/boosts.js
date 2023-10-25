@@ -36,6 +36,8 @@ router.get('/:bstUid', async function(req, res, next) {
 
 });
 
+
+
 //Rechercher tous les boosts du profil par le proUid 
 
 router.get('/profile/:usrUid', async function(req, res, next) {

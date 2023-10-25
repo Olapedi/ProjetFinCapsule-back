@@ -11,10 +11,10 @@ const alertSchema = mongoose.Schema({
     likes : [String],
     alerts : [String],
     creationDate : Date,
-    message : String,
+    testimonial : String,
     isDeleted : Boolean,
     endDate : Date,
-    deleter : String,
+    deleter : String
 
 });
 

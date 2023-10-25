@@ -15,7 +15,7 @@ module.exports = async function getalerts(param){
 
     if (param == 'all') {
 
-        const data = await Alert.find();
+        const data = await Alert.find().populate('owner').populate('sender').populate('receiver');
       
         if (data.length == 0) {
 
@@ -41,7 +41,7 @@ module.exports = async function getalerts(param){
         
         // Vérification de l'existance de l'alerte dans la base
 
-        const data = await Alert.findOne({altUid: param});
+        const data = await Alert.findOne({altUid: param}).populate('owner').populate('sender').populate('receiver');
 
         if (data == null) {
 

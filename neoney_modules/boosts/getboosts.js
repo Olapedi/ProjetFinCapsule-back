@@ -15,7 +15,7 @@ module.exports = async function getboosts(param){
 
     if (param == 'all') {
 
-        const data = await Boost.find();
+        const data = await Boost.find().populate('owner').populate('sender').populate('receiver');
       
         if (data.length == 0) {
 
@@ -41,7 +41,7 @@ module.exports = async function getboosts(param){
         
         // Vérification de l'existance du boost dans la base
 
-        const data = await Boost.findOne({bstUid: param});
+        const data = await Boost.findOne({bstUid: param}).populate('owner').populate('sender').populate('receiver');
 
         if (data == null) {
 
