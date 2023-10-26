@@ -75,7 +75,7 @@ apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
 
 
   const result = ('API called successfully. Returned data: ' + JSON.stringify(data));
-  console.log(result);
+  console.log(data.messageId);
 
   return result;
 

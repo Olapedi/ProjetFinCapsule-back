@@ -13,6 +13,7 @@ const newprofile = require('../neoney_modules/profiles/newprofile');
 const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile');
 const getusers = require('../neoney_modules/users/getusers');
 const checkbodysignup = require('../neoney_modules/users/checkbodysignup');
+const sendEmail = require('../neoney_modules/_common/sendEmail');
 
 /* Lister tous les utilisateurs de la base */
 

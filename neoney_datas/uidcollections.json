@@ -9,6 +9,11 @@
 { "code" : "crq", "collection" : "circlerequests" },
 { "code" : "evt", "collection" : "events"},
 { "code" : "bst", "collection" : "boosts"},
-{ "code" : "alt", "collection" : "alerts"}
+{ "code" : "alt", "collection" : "alerts"},
+{ "code" : "erq", "collection" : "eventrequests"},
+{ "code" : "arq", "collection" : "alignrequests"},
+{ "code" : "cht", "collection" : "chats"}
+
+
 
 ]

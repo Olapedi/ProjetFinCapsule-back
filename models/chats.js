@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const participants = mongoose.Schema ({
+const members = mongoose.Schema ({
 
     uid : Number,
     profile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     addDate : Date,
     adder : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-    isDeleted : Boolean,
+    hasQuit : Boolean,
     deleter : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
 
 })
@@ -14,12 +14,12 @@ const participants = mongoose.Schema ({
 const messages = mongoose.Schema({
 
     sendDate : Date,
-    senderUser : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-    senderProfile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
+    owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+    sender : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     text : String,
     hashText : String,
     likes : [String],
-    dislike : [String],
+    dislikes : [String],
     readers : [String],
     deleters : [String],
     isDeleted : Boolean,
@@ -30,9 +30,11 @@ const messages = mongoose.Schema({
 
 const chatSchema = mongoose.Schema({
 
-    chUid: String,
+    chtUid: String,
     owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-    participants : [participants],
+    subject : String,
+    members : [members],
+    messages : [messages],
     creationDate : Date,
     isDeleted : Boolean,
     deleter : { type: mongoose.Schema.Types.ObjectId, ref: 'users' }

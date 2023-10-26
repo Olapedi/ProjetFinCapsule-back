@@ -149,7 +149,7 @@ module.exports = async function signup(userdata) {
           
             }
           
-        const send = await sendEmail(emailUser)
+        const send = await sendEmail(emailUser);
 
         result.push(results[6]);
         result.push(userSignedIn);
