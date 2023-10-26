@@ -6,6 +6,7 @@ const alnrequestSchema = mongoose.Schema({
     owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     sender : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     receiver : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
+    message : String,
     creationDate : Date,
     isAccepted : Boolean,
     isCancelled : Boolean,

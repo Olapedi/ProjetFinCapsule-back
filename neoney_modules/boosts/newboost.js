@@ -19,6 +19,7 @@ const generateuid = require('../../neoney_modules/_common/generateuid')
 module.exports = async function newboost(boostdata) {
   
   let result = [];
+
   const bstUid = await generateuid('bst');
 
     const checkowner = await checkuseruid(boostdata[0].owner) // Vérifier que l'utilisateur existe
@@ -54,12 +55,15 @@ module.exports = async function newboost(boostdata) {
               
                   const newitem = await newBoost.save();
               
-                  return newitem;
+                  result.push(results[1]);
+                  result.push(newitem);
+
+                  return result;
 
                 } else {  // Le profil du receiver n'existe pas
 
-                const result = checkreceiver;
-
+                result = checkreceiver;
+                
                 return result;
 
                 } 
