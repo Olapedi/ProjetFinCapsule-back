@@ -4,11 +4,17 @@
 { "code" : "aff", "collection" : "affiliates" },  
 { "code" : "pro", "collection" : "profiles" },  
 { "code" : "pla", "collection" : "plans" },
-{ "code" : "leg", "collection" : "legalinfos" },  
-{ "code" : "cir", "collection" : "circles" },  
-{ "code" : "crq", "collection" : "circlerequests" },
-{ "code" : "evt", "collection" : "events"},
+{ "code" : "lgl", "collection" : "legalinfos" },
 { "code" : "bst", "collection" : "boosts"},
-{ "code" : "alt", "collection" : "alerts"}
+{ "code" : "alt", "collection" : "alerts"},
+{ "code" : "aln", "collection" : "alignments"},
+{ "code" : "alr", "collection" : "alnrequests"},
+{ "code" : "evt", "collection" : "events"},
+{ "code" : "evr", "collection" : "evtrequests"},
+{ "code" : "cht", "collection" : "chats"},
+{ "code" : "cir", "collection" : "circles" },  
+{ "code" : "crq", "collection" : "circlerequests" }
+
+
 
 ]

@@ -11,7 +11,9 @@ var eventsRouter = require('./routes/events');
 var profilesRouter = require('./routes/profiles');
 var plansRouter = require('./routes/plans');
 var boostRouter = require('./routes/boosts');
-var alertRouter = require('./routes/alerts')
+var alertRouter = require('./routes/alerts');
+var alnrequestRouter = require('./routes/alnrequests');
+
 
 var app = express();
 const cors = require('cors');
@@ -34,5 +36,6 @@ app.use('/profiles', profilesRouter);
 app.use('/plans', plansRouter);
 app.use('/boosts', boostRouter);
 app.use('/alerts', alertRouter);
+app.use('/alnrequest', alnrequestRouter);
 
 module.exports = app;

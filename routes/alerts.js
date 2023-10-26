@@ -10,6 +10,8 @@ const checkuseruid = require('../neoney_modules/_common/checkuseruid');
 const checkbodynewalert = require('../neoney_modules/alerts/checkbodynewalert');
 const getalerts = require('../neoney_modules/alerts/getalerts')
 const newalert = require('../neoney_modules/alerts/newalert');
+const getalertsprofile = require ('../neoney_modules/alerts/getalertsprofile');
+const getprofiles = require('../neoney_modules/profiles/getprofiles');
 
 /* Lister toutes les alertes de la base */
 
@@ -35,19 +37,21 @@ router.get('/:altUid', async function(req, res, next) {
 
 });
 
-//Rechercher tous les alerts du profil par son proUid 
 
-router.get('/profile/:usrUid', async function(req, res, next) {
+//Rechercher toutes les alertes du profil par le proUid
 
-  let profileDisplay = [];
+router.get('/profile/:proUid', async function(req, res, next) {
 
-  const data = await checkuseruid(req.params.usrUid) // Vérifier que l'utilisateur existe
+  let alertDisplay = [];
+
+  const data = await getprofiles(req.params.proUid) // Vérifier que le profil existe
 
   if (data[0].result) {
 
-  const result = await getprofilesuser(req.params.usrUid);
 
-  res.json(result);
+    const result = await getalertsprofile(req.params.proUid);
+
+    res.json(result);
 
   } else {
 

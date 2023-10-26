@@ -1,59 +1,56 @@
 var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
-const User = require('../../models/users');
-const moment = require('moment');
-const Boost = require('../../models/boosts')
+const alnrequest = require('../../models/alnrequests')
 
 
 // Import Neoney Modules
 
-const results = require('../../neoney_results/results_boosts.json');
+const results = require('../../neoney_results/results_alnrequest.json');
 const checkuseruid = require('../../neoney_modules/_common/checkuseruid');
 const getprofiles = require('../../neoney_modules/profiles/getprofiles');
-const generateuid = require('../../neoney_modules/_common/generateuid')
-
+const generateuid = require('../../neoney_modules/_common/generateuid');
+const Alnrequest = require('../../models/alnrequests');
 
 // Function
 
-module.exports = async function newboost(boostdata) {
+module.exports = async function newalnrequest(alnrequestdata) {
   
   let result = [];
 
-  const bstUid = await generateuid('bst');
+  const alrUid = await generateuid('alr');
 
-    const checkowner = await checkuseruid(boostdata[0].owner) // Vérifier que l'utilisateur existe
+    const checkowner = await checkuseruid(alnrequestdata[0].owner) // Vérifier que l'utilisateur existe
 
         if (checkowner[0].result) { // L'utilisateur existe
 
-
-            const checksender = await getprofiles(boostdata[0].sender) // Vérifier que le profil du sender existe
+            const checksender = await getprofiles(alnrequestdata[0].sender) // Vérifier que le profil du sender existe
 
 
             if (checksender[0].result) { // Le profil du sender existe
 
 
-            const checkreceiver = await getprofiles(boostdata[0].receiver) // Vérifier que le profil du receiver existe
+            const checkreceiver = await getprofiles(alnrequestdata[0].receiver) // Vérifier que le profil du receiver existe
 
                 
                 if (checkreceiver[0].result) { // Le profil du receiver existe
 
-                // Création du boost dans la base
+                // Création de la requette d'alignement dans la base
 
-                const newBoost = new Boost({
+                const newAlnrequest = new Alnrequest({
 
-                    bstUid : bstUid,
-                    category : boostdata[0].category,
-                    subCategory : boostdata[0].subCategory,
+                    alrUid : alrUid,
                     owner : checkowner[1].id,
                     sender : checksender[1].id,
                     receiver : checkreceiver[1].id,
-                    testimonial : boostdata[0].testimonial,
-                    creationDate : new Date(),              
+                    message : alnrequestdata[0].message,
+                    creationDate : new Date(),
+                    isAccepted : false,
+                    isCancelled : false,
               
                   })
-              
-                  const newitem = await newBoost.save();
+
+                  const newitem = await newAlnrequest.save();
               
                   result.push(results[1]);
                   result.push(newitem);

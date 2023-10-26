@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const legalinfoSchema = mongoose.Schema({
 
-    legUid : String,
+    lglUid : String,
     owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     type : String,
     label : String,

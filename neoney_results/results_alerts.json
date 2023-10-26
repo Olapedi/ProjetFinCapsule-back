@@ -18,6 +18,10 @@
   { "id": 16, "message" : "Le champ 'receiver' est manquant", "result": false},
   { "id": 17, "message" : "Le champ 'testimonial' est vide", "result": false},
   { "id": 18, "message" : "Le champ 'testimonial' est manquant", "result": false},
-  { "id": 19, "message" : "Tous les champs ont été remplis", "result": true}
+  { "id": 19, "message" : "Tous les champs ont été remplis", "result": true},
+  { "id": 20, "message" : "Vous n'avez donné aucune alerte pour le moment", "result": false},
+  { "id": 21, "message" : "Vous avez donné des alertes", "result": true},
+  { "id": 22, "message" : "Vous n'avez reçu aucune alerte pour le moment", "result": false},
+  { "id": 23, "message" : "Vous avez reçu des alertes", "result": true}
 
 ]
