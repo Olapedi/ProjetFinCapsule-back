@@ -11,8 +11,7 @@ const checkbodynewboost = require('../neoney_modules/boosts/checkbodynewboost');
 const getboosts = require('../neoney_modules/boosts/getboosts');
 const getprofiles = require('../neoney_modules/profiles/getprofiles');
 const newboost = require('../neoney_modules/boosts/newboost');
-
-
+const getboostsprofile = require('../neoney_modules/boosts/getboostsprofile');
 
 /* Lister tous les boosts de la base */
 
@@ -40,21 +39,19 @@ router.get('/:bstUid', async function(req, res, next) {
 
 });
 
-
-
 //Rechercher tous les boosts du profil par le proUid 
 
-router.get('/profile/:usrUid', async function(req, res, next) {
+router.get('/profile/:proUid', async function(req, res, next) {
 
-  let profileDisplay = [];
+  let boostDisplay = [];
 
-  const data = await checkuseruid(req.params.usrUid) // Vérifier que l'utilisateur existe
+  const data = await getprofiles(req.params.proUid) // Vérifier que le profil existe
 
   if (data[0].result) {
 
-  const result = await getprofilesuser(req.params.usrUid);
+      const result = await getboostsprofile(req.params.proUid);
 
-  res.json(result);
+      res.json(result);
 
   } else {
 
