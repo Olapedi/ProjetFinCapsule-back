@@ -70,22 +70,21 @@ router.post('/new', async (req, res) => {
     owner : req.body.owner,
     sender : req.body.sender,
     receiver : req.body.receiver,
-    message : req.body.testimonial
+    message : req.body.message
 
   }]
 
   const checkresult = await checkbodyalnrequest(datareceived[0]); // Vérifier si tous les champs ont bien été renseignés
 
-
   if (checkresult[0].result) { // Tous les champs sont remplis
 
-        const result = await newalnrequest(datareceived) // Appel de la fonction de création de la requette
+        const result = await newalnrequest(datareceived) // Appel de la fonction de création de la requette d'alignement
         
         res.json(result);
 
         } else { // Tous les champs ne sont pas remplis
         
-        res.json(checkresult);
+          res.json(checkresult);
 
       }
 

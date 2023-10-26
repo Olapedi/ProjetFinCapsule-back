@@ -1,6 +1,6 @@
 [
     { "id": 0, "message" : "Aucune demande d'alignement n'a encore été créée", "result": false},
-    { "id": 1, "message" : "La demande d'alignement a été ajoutée", "result": true},
+    { "id": 1, "message" : "La demande d'alignement a été envoyée", "result": true},
     { "id": 2, "message" : "Le like de la demande d'alignement a été ajouté", "result": true},
     { "id": 3, "message" : "Le like de la demande d'alignement a été enlevé", "result": true},
     { "id": 4, "message" : "Des demandes d'alignement ont été trouvées", "result": true},
