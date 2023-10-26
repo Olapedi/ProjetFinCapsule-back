@@ -41,31 +41,55 @@ if (!isValidEmail) {
 
 } else {
 
- let data = await User.findOne({email: {$regex: new RegExp(email, 'i')}})
-  
-    if (data == null) {
-
-      result.push(results[1]);
-
-      return result;
+    let data = await User.findOne({email: {$regex: new RegExp(email, 'i')}})
       
-      } else {
+        if (data == null) {
 
-        if (!bcrypt.compareSync(password, data.password)) {
-
-          result.push(results[2]);
+          result.push(results[1]);
 
           return result;
+          
+          } else {
 
-      } else {
+            if (!bcrypt.compareSync(password, data.password)) {
 
-        const userProfiles = await getprofilesuser(data.usrUid);
-        
-        console.log(userProfiles);
-        
+              result.push(results[2]);
 
-        let userSignedIn = {
+              return result;
+
+              } else {
+
+                  const userProfiles = await getprofilesuser(data.usrUid); // Récupération des profiles de l'utilisateur
+
+                  if (userProfiles[0].result) {
+
+                    const profileDisplay = { // Initialisation des informations du profil nécessaires à l'affichage
+
+                      
+                      result : true,
+                      proUid : userProfiles[1].proUid,  
+            
+                      cards: [
+            
+                            {
+                                uid: userProfiles[1].cards[0].uid,
+                                displayName : userProfiles[1].cards[0].displayName,
+                                title : userProfiles[1].cards[0].title,
+                                organization : userProfiles[1].cards[0].organization,
+                                description : userProfiles[1].cards[0].description,
+                                phone : userProfiles[1].cards[0].phone,
+                                email : userProfiles[1].cards[0].email,
+                                website : userProfiles[1].cards[0].website,
+                                isMain : userProfiles[1].cards[0].isMain,
+            
+                            }
+                        ],
+                        
+                    }
                     
+
+                    let userSignedIn = {
+                              
                       firstname: data.firstname, 
                       lastname: data.lastname,
                       email: data.email, 
@@ -83,18 +107,52 @@ if (!isValidEmail) {
                       isActivated : data.isActivated,    
                       isCertified : data.isCertified,
                       signUpDate : data.signUpDate,
+                      profile : profileDisplay,
+                  
+                      }
+
+                  result.push(results[3]);
+                  result.push(userSignedIn);
+
+                  return result;
+
+
+                  } else {
+
+                    let userSignedIn = {
+                              
+                      firstname: data.firstname, 
+                      lastname: data.lastname,
+                      email: data.email, 
+                      token: data.token, 
+                      usrUid: data.usrUid, 
+                      neocode: data.neocode, 
+                      country: data.country, 
+                      city: data.city, 
+                      phone: data.phone, 
+                      sponsor: data.sponsor, 
+                      isCountryLimited : data.isCountryLimited,
+                      isCityLimited : data.isCityLimited,
+                      isJobLimited : data.isJobLimited,
+                      limitCount : data.limitCount,
+                      isActivated : data.isActivated,    
+                      isCertified : data.isCertified,
+                      signUpDate : data.signUpDate,
+                      profile : { result : false },
                   
                   }
 
-        result.push(results[3]);
-        result.push(userSignedIn);
+                  result.push(results[3]);
+                  result.push(userSignedIn);
 
-        return result;
-    
-        }
+                  return result;
+
+              }
+              
+            }
+
+          }
 
       }
-
-  }
 
 }
