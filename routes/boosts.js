@@ -27,6 +27,7 @@ router.get('/', async function(req, res, next) {
 
 });
 
+
 //Rechercher un boost par son Uid
 
 router.get('/:bstUid', async function(req, res, next) {
@@ -39,7 +40,8 @@ router.get('/:bstUid', async function(req, res, next) {
 
 });
 
-//Rechercher tous les boosts du profil par le proUid 
+
+//Rechercher tous les boosts du profil par le proUid
 
 router.get('/profile/:proUid', async function(req, res, next) {
 
