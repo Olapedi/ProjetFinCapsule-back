@@ -20,7 +20,7 @@ const cards = mongoose.Schema ({
 const attendees = mongoose.Schema({
 
     uid : Number,
-    request : { type: mongoose.Schema.Types.ObjectId, ref: 'eventrequests' },
+    request : { type: mongoose.Schema.Types.ObjectId, ref: 'evtrequests' },
     profile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     role : String,
     joinDate : Date,
@@ -92,7 +92,7 @@ const admins = mongoose.Schema ({
 
     uid : Number,
     profile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
-    request : { type: mongoose.Schema.Types.ObjectId, ref: 'eventrequests' },
+    request : { type: mongoose.Schema.Types.ObjectId, ref: 'evtrequests' },
     role : String,
     creationDate : Date,
     isDeleted : Boolean,

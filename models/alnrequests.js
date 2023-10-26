@@ -1,19 +1,19 @@
 const mongoose = require('mongoose');
 
-const alignrequestSchema = mongoose.Schema({
+const alnrequestSchema = mongoose.Schema({
 
-    arqUid : String,
+    alrUid : String,
     owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     sender : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     receiver : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     creationDate : Date,
-    isCancelled : Boolean,
     isAccepted : Boolean,
+    isCancelled : Boolean,
     endDate : Date,
     enderAccount : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
 
 });
  
-const Alignrequest = mongoose.model('alignrequests', alignrequestSchema);
+const Alnrequest = mongoose.model('alnrequests', alnrequestSchema);
 
-module.exports = Alignrequest;
+module.exports = Alnrequest;

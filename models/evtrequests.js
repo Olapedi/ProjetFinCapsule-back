@@ -13,9 +13,9 @@ const tickets = mongoose.Schema ({
 
 })
 
-const eventrequestSchema = mongoose.Schema({
+const evtrequestSchema = mongoose.Schema({
 
-    erqUid : String,
+    evrUid : String,
     owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     sender : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles'},
     event : { type: mongoose.Schema.Types.ObjectId, ref: 'events' },
@@ -31,6 +31,6 @@ const eventrequestSchema = mongoose.Schema({
 
 });
 
-const Eventrequest = mongoose.model('eventrequests', eventrequestSchema);
+const Evtrequest = mongoose.model('evtrequests', evtrequestSchema);
 
-module.exports = Eventrequest;
+module.exports = Evtrequest;

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const alignmentSchema = mongoose.Schema({
 
-    alUid : String,
+    alnUid : String,
     request : { type: mongoose.Schema.Types.ObjectId, ref: 'alignrequests' },
     profileone : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     profiletwo : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
