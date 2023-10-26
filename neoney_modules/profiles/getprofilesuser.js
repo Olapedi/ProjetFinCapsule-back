@@ -35,7 +35,7 @@ module.exports = async function getprofilesuser(param){
         // La recherche a renvoyé un résultat. L'utilisateur a des profils dans la base.
 
         result.push(results[23]);
-        result.push(data2[1]);
+        result.push(data2[0]);
 
         return result;
 

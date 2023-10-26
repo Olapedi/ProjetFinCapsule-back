@@ -11,7 +11,8 @@ const token = uid2(32);
 
 // Import Project Modules
 
-const results = require('../../neoney_results/results_users.json')
+const results = require('../../neoney_results/results_users.json');
+const getprofilesuser = require('../../neoney_modules/profiles/getprofilesuser');
 
 // Function
 
@@ -19,10 +20,12 @@ module.exports = async function signin(credentials){
 
 let result = [];
 
-const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/; // Initialisation du regex pour tester le format de l'email
 
 function validateEmail(email) {
+
   return emailRegex.test(email);
+
 }
 
 const email = credentials[0].email.trim();
@@ -55,6 +58,11 @@ if (!isValidEmail) {
           return result;
 
       } else {
+
+        const userProfiles = await getprofilesuser(data.usrUid);
+        
+        console.log(userProfiles);
+        
 
         let userSignedIn = {
                     

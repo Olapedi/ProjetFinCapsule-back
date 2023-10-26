@@ -86,7 +86,6 @@ module.exports = async function checkbodynewprofile(userdata2){
 
       }
 
-      console.log(userdata2.jobCategories);
 
       if (userdata2.jobCategories !== undefined) {
 
@@ -95,7 +94,7 @@ module.exports = async function checkbodynewprofile(userdata2){
           result.push(results[11]);
           return result;
   
-        } 
+        }  
 
       } else {
 
@@ -104,7 +103,7 @@ module.exports = async function checkbodynewprofile(userdata2){
 
       }
 
-      if (userdata2.jobSubCategories[0] !== undefined) {
+      if (userdata2.jobSubCategories !== undefined) {
 
         if (userdata2.jobSubCategories == '') {
 
