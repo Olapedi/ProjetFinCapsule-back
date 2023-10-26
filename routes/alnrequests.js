@@ -9,6 +9,7 @@ const getalnrequests = require('../neoney_modules/alnrequest/getalnrequests');
 const getprofiles = require('../neoney_modules/profiles/getprofiles');
 const newalnrequest = require('../neoney_modules/alnrequest/newalnrequest');
 const getalnrequestsprofile = require('../neoney_modules/alnrequest/getalnrequestsprofile');
+const checkalnrequests = require('../neoney_modules/alnrequest/checkalnrequests')
 
 /* Lister toutes les requettes d'alignement de la base */
 
@@ -61,7 +62,7 @@ router.get('/profile/:proUid', async function(req, res, next) {
 });
 
 
-// Créer une nouvelle requette d'alignement 
+// Créer une nouvelle demande d'alignement 
 
 router.post('/new', async (req, res) => {
 
@@ -78,9 +79,19 @@ router.post('/new', async (req, res) => {
 
   if (checkresult[0].result) { // Tous les champs sont remplis
 
-        const result = await newalnrequest(datareceived) // Appel de la fonction de création de la requette d'alignement
-        
-        res.json(result);
+        const checkAlign = await checkalnrequests(datareceived[0].sender, datareceived[0].receiver); // Vérifier qu'il n'y ait pas de demande en attente entre ces 2 profils
+
+              if (checkAlign[0].result) { // Si les deux profils ne sont pas déjà alignés. Result true.
+
+                const result = await newalnrequest(datareceived) // Appel de la fonction de création de la requette d'alignement
+              
+                res.json(result);
+
+              } else { // Si les deux profils sont déjà alignés. Demande refusée.
+
+                res.json(checkAlign);
+
+              }
 
         } else { // Tous les champs ne sont pas remplis
         

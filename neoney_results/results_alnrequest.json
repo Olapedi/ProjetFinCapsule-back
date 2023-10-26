@@ -1,9 +1,9 @@
 [
-    { "id": 0, "message" : "Aucune demande d'alignement n'a encore été créée", "result": false},
-    { "id": 1, "message" : "La demande d'alignement a été envoyée", "result": true},
+    { "id": 0, "message" : "Aucune demande d'alignement n'est en attente", "result": false},
+    { "id": 1, "message" : "La demande d'alignement a été créée", "result": true},
     { "id": 2, "message" : "Le like de la demande d'alignement a été ajouté", "result": true},
     { "id": 3, "message" : "Le like de la demande d'alignement a été enlevé", "result": true},
-    { "id": 4, "message" : "Des demandes d'alignement ont été trouvées", "result": true},
+    { "id": 4, "message" : "Des demandes d'alignement sont en attente", "result": true},
     { "id": 5, "message" : "La demande d'alignement n'a pas été trouvée", "result": false},
     { "id": 6, "message" : "La demande d'alignement a été trouvée", "result": true},
     { "id": 7, "message" : "Le champ 'category' est vide", "result": false},
@@ -22,7 +22,9 @@
     { "id": 20, "message" : "Aucune demande d'alignement envoyée", "result": false},
     { "id": 21, "message" : "Demandes d'alignement envoyées en attente", "result": true},
     { "id": 22, "message" : "Aucune demande d'alignement reçue", "result": false},
-    { "id": 23, "message" : "Demandes d'alignement reçues en attente", "result": true}
-
+    { "id": 23, "message" : "Demandes d'alignement reçues en attente", "result": true},
+    { "id": 24, "message" : "Demande d'alignement déjà existante", "result": false},
+    { "id": 25, "message" : "La demande d'alignement est autorisée", "result": true},
+    { "id": 26, "message" : "Les deux profils sont identiques. Demande refusée.", "result": false}
 
   ]

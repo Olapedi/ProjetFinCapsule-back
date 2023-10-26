@@ -15,23 +15,18 @@ module.exports = async function getalnrequests(param){
 
     if (param == 'all') {
 
-        const data = await Alnrequest.find().populate('owner').populate('sender').populate('receiver');
-      
-        if (data.length == 0) {
+        const data = await Alnrequest.find({isCancelled : false, isAccepted: false}).populate('owner').populate('sender').populate('receiver');
+
+        if (data.length == 0) { // La recherche n'a renvoyé aucun résultat
 
         result.push(results[0])
 
         return result;
 
-        } else {
+        } else { // La recherche a renvoyé des résultats
         
         result.push(results[4])
-
-        data.map((item) => {
-
-            result.push(item)
-
-        })
+        result.push(...data)
         
         return result;
 
@@ -43,9 +38,7 @@ module.exports = async function getalnrequests(param){
 
         const data = await Alnrequest.findOne({alrUid: param}).populate('owner').populate('sender').populate('receiver');
 
-        if (data == null) {
-
-        // La recherche n'a renvoyé aucun résultat. La demande d'alignement n'existe pas.
+        if (data == null) { // La recherche n'a renvoyé aucun résultat. La demande d'alignement n'existe pas.
 
         const alnrequest = {alrUid: param};
 

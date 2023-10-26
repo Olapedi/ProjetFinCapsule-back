@@ -49,7 +49,7 @@ module.exports = async function newalnrequest(alnrequestdata) {
                     isCancelled : false,
               
                   })
-              
+
                   const newitem = await newAlnrequest.save();
               
                   result.push(results[1]);
