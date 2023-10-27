@@ -33,13 +33,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
 
-// Autoriser toutes les origines (à des fins de démonstration, ne le faites pas en production sauf si c'est intentionnel)
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-  });
-
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
