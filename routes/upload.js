@@ -8,6 +8,7 @@ const uploadToCloudinary = require('../neoney_modules/_common/upload')
 
 router.post("/", async (req, res) => {
     const result = await uploadToCloudinary(req.files.photoFromFront, backIsLocal=true)
+    console.log(req.body)
     res.json(result)
 
     // const ext = req.files.photoFromFront.name.split('.')[1]
