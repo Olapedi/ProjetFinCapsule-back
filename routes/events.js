@@ -3,6 +3,9 @@ var router = express.Router();
 const Event = require("../models/events");
 const results = require("../neoney_results/results_events.json");
 
+const uploadToCloudinary = require('../neoney_modules/_common/upload')
+
+
 // Import Project Modules
 const newEvent = require("../neoney_modules/events/newevent");
 const newEvent_formData = require("../neoney_modules/events/newevent_formdata");
@@ -38,12 +41,14 @@ router.post("/new", async (req, res) => {
 // Création d'un nouvel événement
 router.post("/newformdata", async (req, res) => {
     // On passe tout le body
-    let result = await newEvent_formData(req.body);
-
+    // let result = await newEvent_formData(req.body);
+    const result = await uploadToCloudinary(req.files.picture, backIsLocal=true)
+    console.log(req.body)
     console.log(result);
 
-    // Renvoie du résultat
-    res.json(result);
+    // Renvoi du résultat
+    res.json(result)
+
 });
 
 
