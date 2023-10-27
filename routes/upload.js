@@ -7,7 +7,10 @@ const uploadToCloudinary = require('../neoney_modules/_common/upload')
 
 
 router.post("/", async (req, res) => {
-    const result = await uploadToCloudinary(req.files.photoFromFront, backIsLocal=true)
+
+    console.log("from back - route upload - req.files =>", req.files)
+
+    const result = await uploadToCloudinary(req.files.picture, backIsLocal=true)
     console.log(req.body)
     res.json(result)
 
