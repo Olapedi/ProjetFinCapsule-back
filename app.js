@@ -1,5 +1,6 @@
 require ('dotenv').config();
 
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -13,7 +14,8 @@ var plansRouter = require('./routes/plans');
 var boostRouter = require('./routes/boosts');
 var alertRouter = require('./routes/alerts');
 var alnrequestRouter = require('./routes/alnrequests');
-
+var uploadRouter = require('./routes/upload');
+const fileUpload = require('express-fileupload');
 
 var app = express();
 const cors = require('cors');
@@ -28,6 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -37,5 +40,6 @@ app.use('/plans', plansRouter);
 app.use('/boosts', boostRouter);
 app.use('/alerts', alertRouter);
 app.use('/alnrequest', alnrequestRouter);
+app.use('/upload', uploadRouter);
 
 module.exports = app;
