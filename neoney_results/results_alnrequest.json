@@ -25,6 +25,19 @@
     { "id": 23, "message" : "Demandes d'alignement reçues en attente", "result": true},
     { "id": 24, "message" : "Demande d'alignement déjà existante", "result": false},
     { "id": 25, "message" : "La demande d'alignement est autorisée", "result": true},
-    { "id": 26, "message" : "Les deux profils sont identiques. Demande refusée.", "result": false}
+    { "id": 26, "message" : "Les deux profils sont identiques. Demande refusée.", "result": false},
+    { "id": 27, "message" : "Le paramètre 'alrUid' est vide", "result": false},
+    { "id": 28, "message" : "Le paramètre 'alrUid' est manquant", "result": false},
+    { "id": 29, "message" : "Le champ 'ender' est vide", "result": false},
+    { "id": 30, "message" : "Le champ 'ender' est manquant", "result": false},
+    { "id": 31, "message" : "Le champ 'action' est vide", "result": false},
+    { "id": 32, "message" : "Le champ 'action' est manquant", "result": false},
+    { "id": 33, "message" : "La demande d'alignement a été acceptée", "result": true},
+    { "id": 34, "message" : "La demande d'alignement a déjà été acceptée", "result": false},
+    { "id": 35, "message" : "La demande d'alignement a été annulée", "result": true},
+    { "id": 36, "message" : "La demande d'alignement a déjà été annulée", "result": false},
+    { "id": 37, "message" : "La demande d'alignement a été supprimée", "result": true},
+    { "id": 38, "message" : "La demande d'alignement a déjà été supprimée", "result": false},
+    { "id": 39, "message" : "La modification de la demande d'alignement dans la base a échoué", "result": false}
 
   ]
