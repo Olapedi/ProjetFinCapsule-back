@@ -28,6 +28,7 @@ function validateEmail(email) {
 
 }
 
+
 const email = credentials[0].email.trim();
 const password = credentials[0].password.trim();
 
@@ -65,7 +66,6 @@ if (!isValidEmail) {
 
                     const profileDisplay = { // Initialisation des informations du profil nécessaires à l'affichage
 
-                      
                       result : true,
                       proUid : userProfiles[1].proUid,  
             
