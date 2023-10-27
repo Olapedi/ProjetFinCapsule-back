@@ -19,7 +19,7 @@ module.exports = async function getalnrequestsprofile(param){
     
     }
 
-        // Recherche des boosts du profil
+        // Recherche des demande d'alignement du profil
 
         const data = await Alnrequest.find().populate('sender').populate('receiver');
 

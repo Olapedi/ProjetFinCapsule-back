@@ -37,7 +37,7 @@ const userSchema = mongoose.Schema({
     isCertified : Boolean,
     isDeleted : Boolean,
     isBanned : Boolean,
-    blockedUsers : [String],
+    blockedUids : [String],
     lastlogins : [lastlogins]
 
 });

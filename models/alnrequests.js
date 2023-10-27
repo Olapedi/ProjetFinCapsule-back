@@ -10,6 +10,7 @@ const alnrequestSchema = mongoose.Schema({
     creationDate : Date,
     isAccepted : Boolean,
     isCancelled : Boolean,
+    isDeleted : Boolean,
     endDate : Date,
     enderAccount : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
 

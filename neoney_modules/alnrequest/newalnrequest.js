@@ -32,7 +32,6 @@ module.exports = async function newalnrequest(alnrequestdata) {
 
             const checkreceiver = await getprofiles(alnrequestdata[0].receiver) // Vérifier que le profil du receiver existe
 
-                
                 if (checkreceiver[0].result) { // Le profil du receiver existe
 
                 // Création de la requette d'alignement dans la base
@@ -47,6 +46,7 @@ module.exports = async function newalnrequest(alnrequestdata) {
                     creationDate : new Date(),
                     isAccepted : false,
                     isCancelled : false,
+                    isDeleted : false,
               
                   })
 
@@ -64,7 +64,6 @@ module.exports = async function newalnrequest(alnrequestdata) {
                 return result;
 
                 } 
-
 
             } else { // Le profil du sender n'existe pas
 

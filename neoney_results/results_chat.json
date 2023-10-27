@@ -1,0 +1,40 @@
+[
+    { "id": 0, "message" : "Aucune conversation n'a encore été créée", "result": false},
+    { "id": 1, "message" : "La conversation a été créée", "result": true},
+    { "id": 2, "message" : "Le like du message a été ajouté", "result": true},
+    { "id": 3, "message" : "Le like du message a été retiré", "result": true},
+    { "id": 4, "message" : "Des conversations ont été trouvées", "result": true},
+    { "id": 5, "message" : "La conversation n'a pas été trouvée", "result": false},
+    { "id": 6, "message" : "La conversation a été trouvée", "result": true},
+    { "id": 7, "message" : "Le champ 'subject' est vide", "result": false},
+    { "id": 8, "message" : "Le champ 'subject' est manquant", "result": false},
+    { "id": 9, "message" : "Le champ 'text' est vide", "result": false},
+    { "id": 10, "message" : "Le champ 'text' est manquant", "result": false},
+
+
+    { "id": 19, "message" : "Tous les champs ont été remplis", "result": true},
+    { "id": 20, "message" : "Vous n'avez aucune conversation en cours", "result": false},
+    { "id": 21, "message" : "Des messages ont été trouvés dans cette conversation", "result": true},
+    { "id": 22, "message" : "Auncu message trouvé dans cette conversation", "result": false},
+
+
+    { "id": 26, "message" : "Les deux profils sont identiques. Conversation impossible.", "result": false},
+
+    
+    { "id": 11, "message" : "Le champ 'owner' est vide", "result": false},
+    { "id": 12, "message" : "Le champ 'owner' est manquant", "result": false},
+    { "id": 13, "message" : "Le champ 'sender' est vide", "result": false},
+    { "id": 14, "message" : "Le champ 'sender' est manquant", "result": false},
+    { "id": 15, "message" : "Le champ 'receiver' est vide", "result": false},
+    { "id": 16, "message" : "Le champ 'receiver' est manquant", "result": false},
+    { "id": 17, "message" : "Le champ 'message' est vide", "result": false},
+    { "id": 18, "message" : "Le champ 'message' est manquant", "result": false},
+    
+
+
+    { "id": 23, "message" : "Demandes d'alignement reçues en attente", "result": true},
+    { "id": 24, "message" : "Demande d'alignement déjà existante", "result": false},
+    { "id": 25, "message" : "La demande d'alignement est autorisée", "result": true}
+
+
+  ]
