@@ -16,6 +16,7 @@ const checkuseruid = require('../neoney_modules/_common/checkuseruid');
 const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile');
 const getprofiles = require('../neoney_modules/profiles/getprofiles')
 const getprofilesuser = require('../neoney_modules/profiles/getprofilesuser')
+const getprofilesbydisplayname = require('../neoney_modules/profiles/getprofilesbydisplayname')
 
 /* Lister tous les profils de la base */
 
@@ -64,6 +65,15 @@ router.get('/user/:usrUid', async function(req, res, next) {
   }
 
 });
+
+//Rechercher tous les profils qui matchent une regexp sur leur displayName
+
+router.get('/displayname/:displayName', async function(req, res, next) {
+
+  let result = await getprofilesbydisplayname(req.params.displayName)
+  console.log(result)
+  res.json(result)
+})
 
 
 // Créer un nouveau profil 
