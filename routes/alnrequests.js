@@ -13,6 +13,7 @@ const putalnrequests = require('../neoney_modules/alnrequest/putalnrequests')
 const getalnrequestsprofile = require('../neoney_modules/alnrequest/getalnrequestsprofile');
 const checkalnrequests = require('../neoney_modules/alnrequest/checkalnrequests');
 const checkbodyputalnrequest = require('../neoney_modules/alnrequest/checkbodyputalnrequest');
+const getusers = require('../neoney_modules/users/getusers');
 
 /* Lister toutes les requettes d'alignement de la base */
 
@@ -137,11 +138,33 @@ router.put('/:alrUid', async (req, res) => {
 
   if (checkresult[0].result) { // Tous les champs sont remplis
 
-        const checkAlign = await getalnrequests(datareceived[0].alrUid); // Vérifier que cette demande d'aligenement existe bien
+
+    // # Etape 1 : // Vérifier que l'utilisateur Ender existe dans la base
+
+    const dataEnder = await getusers(req.body.ender); 
+
+    if (!dataEnder[0].result) { // L'utilisateur n'existe pas
+  
+      res.json(dataEnder);
+  
+    } else { // L'utilisateur existe 
+
+
+    // # Etape 2 : // Vérifier que la demande d'aligenement existe dans la base
+
+        const checkAlign = await getalnrequests(datareceived[0].alrUid); 
 
               if (checkAlign[0].result) { // Si la demande d'alignement existe 
 
-                  const result = await putalnrequests(checkAlign[1], datareceived[0]) // Appel de la fonction de modification de la demande d'alignement
+                const newdatareceived = [{
+
+                  alrUid : req.params.alrUid, // Uid de la demande d'alignement à modifier
+                  ender : dataEnder[1].id, // id de l'utilisateur connecté qui fait la modififcation
+                  action : req.body.action // 0 pour accepter la demande / 1 pour refuser la demande / 2 pour supprimer la demande et bloquer l'utilisateur et le profile
+              
+                }]
+
+                  const result = await putalnrequests(checkAlign[1], newdatareceived[0]) // Appel de la fonction de modification de la demande d'alignement
                   
                   res.json(result);
 
@@ -151,6 +174,8 @@ router.put('/:alrUid', async (req, res) => {
  
               }
  
+          }
+
         } else { // Tous les champs ne sont pas remplis
         
           res.json(checkresult);
