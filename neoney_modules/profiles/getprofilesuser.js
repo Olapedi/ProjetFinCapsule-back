@@ -18,12 +18,19 @@ module.exports = async function getprofilesuser(param){
 
         const data = await Profile.find().populate('owner');
 
+        const data3 = [];
 
-       await data.map((item) => {console.log(item + '------------')});
+        await data.map((item) => {
+            
+                    if (item.owner !== null) {
 
-        return ('data')
-        const data2 = data.filter((e) => e.owner.usrUid == param)
+                        data3.push(item);
 
+                    }  
+        
+            });
+
+        const data2 = data3.filter((e) => e.owner.usrUid == param)
 
         if (data2.length == 0) {
 
