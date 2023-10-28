@@ -18,7 +18,8 @@ const generateuid = require('../_common/generateuid');
 const checkSponsor = require('./checksponsor');
 const checkbodysignup = require('./checkbodysignup');
 const activationcode = require('./activationcode');
-const sendEmail = require('../../neoney_modules/_common/sendEmail')
+const sendEmail = require('../../neoney_modules/_common/sendEmail');
+const sendgridEmail = require('../../neoney_modules/_common/sendgridEmail');
 
 // Function
 
@@ -142,14 +143,16 @@ module.exports = async function signup(userdata) {
               subject : 'Bienvenue dans la Communauté des Néo Entrepreneurs !',
               receiverEmail : newitem.email,
               receiverName : newitem.firstname,
-              senderEmail : 'hello@neoney.co',
+              senderEmail : 'melanie@neoney.co',
               senderName : 'Melanie @Neoney',
-              replyToEmail : 'hello@neoney.co',
+              replyToEmail : 'melanie@neoney.co',
               replyToName : 'Melanie @Neoney',
           
             }
           
-        const send = await sendEmail(emailUser);
+       // const send = await sendEmail(emailUser);
+
+        const send = await sendgridEmail(emailUser);
 
         result.push(results[6]);
         result.push(userSignedIn);

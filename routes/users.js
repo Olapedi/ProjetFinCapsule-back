@@ -14,6 +14,8 @@ const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprof
 const getusers = require('../neoney_modules/users/getusers');
 const checkbodysignup = require('../neoney_modules/users/checkbodysignup');
 const sendEmail = require('../neoney_modules/_common/sendEmail');
+const sendgridEmail = require('../neoney_modules/_common/sendgridEmail');
+
 
 /* Lister tous les utilisateurs de la base */
 
@@ -34,6 +36,7 @@ router.get('/:usrUid', async function(req, res, next) {
   let userDisplay = [];
 
   const result = await getusers(req.params.usrUid);
+
 
   res.json(result);
 
@@ -73,7 +76,6 @@ router.post('/signup', async (req, res) => {
     sponsor : req.body.sponsor
 
   }]
-  
 
   const resultcheck = await checkbodysignup(datareceived[0]); // Vérifier que les données ne sont pas vides
 
