@@ -56,6 +56,24 @@ router.post('/signin', async (req, res) => {
 
   const result = await signin(credentials);
 
+  const emailUser = {
+
+    displayName: result[1].firstname,
+    activationCode : result[1].activationCode,
+    subject : 'Nouvelle connection à votre compte !',
+    receiverEmail : result[1].email,
+    receiverName : result[1].firstname,
+    senderEmail : 'melanie@neoney.co',
+    senderName : 'Melanie @Neoney',
+    replyToEmail : 'melanie@neoney.co',
+    replyToName : 'Melanie @Neoney',
+
+  }
+
+// const send = await sendEmail(emailUser);
+
+  const send = await sendgridEmail(emailUser);
+
   res.json(result);
   
 })
