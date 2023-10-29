@@ -10,6 +10,7 @@ const uploadToCloudinary = require('../neoney_modules/_common/upload')
 const newEvent = require("../neoney_modules/events/newevent");
 const newEvent_formData = require("../neoney_modules/events/newevent_formdata");
 const getEventFromEvUid = require("../neoney_modules/events/getevent");
+const getevents = require("../neoney_modules/events/getevents");
 
 // Consultation de tous les événements (pour verif pour l'instant)
 router.get("/", async (req, res) => {
@@ -48,6 +49,31 @@ router.post("/newformdata", async (req, res) => {
 
     // Renvoi du résultat
     res.json(result)
+
+});
+
+
+// Recherche d'événements (test Kodzo)
+
+router.get("/test/1/", async (req, res) => {
+
+    let eventDisplay = [];
+
+    const result = await getevents('all');
+  
+    res.json(result);
+
+});
+
+// Recherche d'événements par Uid (test Kodzo)
+
+router.get("/test/1/:evtUid", async (req, res) => {
+
+    let eventDisplay = [];
+
+    const result = await getevents(req.params.evtUid);
+  
+    res.json(result);
 
 });
 
