@@ -14,11 +14,11 @@ router.post("/", async (req, res) => {
     console.log(req.body)
     res.json(result)
 
-    // const ext = req.files.photoFromFront.name.split('.')[1]
+    // const ext = req.files.picture.name.split('.')[1]
     // // const photoPath = `./tmp/${uniqid()}.${ext}`; // <= pour le local
     // const photoPath = `/tmp/${uniqid()}.${ext}`;  // <= pour le déploiement sur Vercel
     // console.log(photoPath)
-    // const resultMove = await req.files.photoFromFront.mv(photoPath);
+    // const resultMove = await req.files.picture.mv(photoPath);
 
     // if (!resultMove) {
     //     const resultCloudinary = await cloudinary.uploader.upload(photoPath);
