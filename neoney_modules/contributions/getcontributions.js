@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
 const Contribution = require('../../models/contributions')
+const moment = require('moment');
 
 // Import Project Modules
 
@@ -49,7 +50,8 @@ module.exports = async function getcontributions(param){
                 hashtags : item.hashtags,
                 likes : item.likes,
                 alerts : item.alerts,
-                comments : item.comments
+                comments : item.comments,
+                creationDate : moment(item.creationDate).format('LLLL')
 
             }
 
@@ -103,7 +105,8 @@ module.exports = async function getcontributions(param){
                 hashtags : data.hashtags,
                 likes : data.likes,
                 alerts : data.alerts,
-                comments : data.comments
+                comments : data.comments,
+                creationDate : moment(item.creationDate).format('LLLL')
 
             }
 
