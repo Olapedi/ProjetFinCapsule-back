@@ -1,6 +1,6 @@
 [
     { "id": 0, "message" : "Aucune contribution n'a encore été créée", "result": false},
-    { "id": 1, "message" : "Le contribution a été ajoutée", "result": true},
+    { "id": 1, "message" : "La contribution a été ajoutée", "result": true},
     { "id": 2, "message" : "Le like de la contribution a été ajoutée", "result": true},
     { "id": 3, "message" : "Le like de la contribution a été enlevée", "result": true},
     { "id": 4, "message" : "Des contributions ont été trouvées", "result": true},
