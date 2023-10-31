@@ -79,7 +79,7 @@ module.exports = async function newEvent(eventData) {
                 // shortDescription : '', //String,
                 longDescription : eventData.longDescription, //String,
                 // profilePicture : '', //String,
-                // bannerPicture : '', //String,
+                bannerPicture : eventData.bannerPicture, //String,
                 // mainVideo : '', //String,
                 // pictures : '', //[String],
                 // videos : [''], //[String],

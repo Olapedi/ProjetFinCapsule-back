@@ -30,10 +30,18 @@ router.get("/:evtUid", async (req, res) => {
 
 // Création d'un nouvel événement
 router.post("/new", async (req, res) => {
+    console.log('files : ',req.files)
+    //Envoi de l'image sur clouinary et récupération de l'url renvoyé
+    const resultUpload = await uploadToCloudinary(req.files.picture, backIsLocal=true)
+    console.log('resultUpload url : ', resultUpload[1])
+    
     // On passe tout le body
-    let result = await newEvent(req.body);
+    let fullBody = req.body
+    fullBody['bannerPicture'] = resultUpload[1]
+    console.log('fullBody : ',fullBody)
+    let result = await newEvent(fullBody);
 
-    console.log(result);
+    console.log('result of the newEvent : ',result);
 
     // Renvoie du résultat
     res.json(result);
