@@ -70,6 +70,7 @@ module.exports = async function newprofile(profiledata) {
     const website = profiledata[0].website;
     const phone = profiledata[0].phone;
     const email = profiledata[0].email;
+    const mainPicture = profiledata[0].mainPicture;
     const isMain = true;
 
     const newProfile = new Profile({
@@ -90,6 +91,7 @@ module.exports = async function newprofile(profiledata) {
       isCoach : isCoach,
       isCloser : isCloser,
       isDeleted : isDeleted,
+      mainPicture : mainPicture,
 
       cards : {
 

@@ -68,7 +68,8 @@ if (!isValidEmail) {
 
                       result : true,
                       proUid : userProfiles[1].proUid,  
-            
+                      mainPicture: userProfiles[1].mainPicture,
+                      
                       cards: [
             
                             {

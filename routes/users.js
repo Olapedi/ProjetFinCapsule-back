@@ -15,6 +15,7 @@ const getusers = require('../neoney_modules/users/getusers');
 const checkbodysignup = require('../neoney_modules/users/checkbodysignup');
 const sendEmail = require('../neoney_modules/_common/sendEmail');
 const sendgridEmail = require('../neoney_modules/_common/sendgridEmail');
+const uploadToCloudinary = require('../neoney_modules/_common/upload')
 
 
 /* Lister tous les utilisateurs de la base */
@@ -100,6 +101,9 @@ router.post('/signup', async (req, res) => {
 
 router.post('/activate', async (req, res) => {
 
+  //Envoi de l'image sur clouinary et récupération de l'url renvoyé
+  const resultUpload = await uploadToCloudinary(req.files.picture, backIsLocal=true)
+      
   const result = [];
 
   const userreceived = {
@@ -120,8 +124,8 @@ router.post('/activate', async (req, res) => {
     website : req.body.website,
     phone : req.body.phone,
     email : req.body.email,
-    usrUid : req.body.usrUid
-
+    usrUid : req.body.usrUid,
+    mainPicture : resultUpload[1]
   }]
   
   const checkresult = await checkbodynewprofile(datareceived[0]);
@@ -140,15 +144,11 @@ router.post('/activate', async (req, res) => {
       res.json(result);
   
     } else {
-  
       res.json(activationResult);
-  
     }
 
   } else {
-    
     res.json(checkresult);
-
   }
   
 });
