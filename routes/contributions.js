@@ -17,7 +17,7 @@ const getcontributionsprofile = require('../neoney_modules/contributions/getcont
 
 router.get('/', async function(req, res, next) {
 
-  let ContributionDisplay = [];
+  let contributionDisplay = [];
 
   const result = await getcontributions('all');
 
@@ -30,7 +30,7 @@ router.get('/', async function(req, res, next) {
 
 router.get('/:ctbUid', async function(req, res, next) {
 
-  let ContributionDisplay = [];
+  let contributionDisplay = [];
 
   const result = await getcontributions(req.params.ctbUid);
 
