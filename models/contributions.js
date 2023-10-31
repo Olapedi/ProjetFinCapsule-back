@@ -3,8 +3,8 @@ const mongoose = require("mongoose")
 const comments = mongoose.Schema ({
 
     uid : Number,
-    writerAccount : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-    writerProfile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
+    owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+    sender : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
     date : Date,
     likes : [String],
     alerts : [String],
@@ -16,22 +16,26 @@ const comments = mongoose.Schema ({
 
 const contributionSchema = mongoose.Schema({
     
-    ctUid : String,
-    user : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-    profile : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
-    contentID : String,
-    type : String,
+    ctbUid : String,
+    owner : { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+    sender : { type: mongoose.Schema.Types.ObjectId, ref: 'profiles' },
+    creationDate : Date,
+    title : String,
+    text : String,
+    privacy : String,
+    category : String,
+    deadline : String,
     mainPicture : String,
     pictures : [String],
     mainVideo : String,
     videos : [String],
-    message : String,
+    files : [String],
     isVisible : Boolean,
-    privacy : String,
     hashtags : [String],
     likes : [String],
     alerts : [String],
     comments: [comments],
+    isDeleted: Boolean
 
 });
 

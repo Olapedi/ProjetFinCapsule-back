@@ -13,8 +13,7 @@
 { "code" : "evr", "collection" : "evtrequests"},
 { "code" : "cht", "collection" : "chats"},
 { "code" : "cir", "collection" : "circles" },  
-{ "code" : "crq", "collection" : "circlerequests" }
-
-
+{ "code" : "crq", "collection" : "circlerequests" },
+{ "code" : "ctb", "collection" : "contribution" }
 
 ]
