@@ -65,7 +65,7 @@ router.put("/update", (req, res) => {
 
     Event.updateOne({evtUid: req.body.evtUid}, {
         $set: {
-            title: req.body.title,
+            "occurences.0.title": req.body.title,
             // shortDescription: req.body.shortDescription,
             // longDescription: req.body.longDescription,
             // bannerPicture: req.body.bannerPicture,
