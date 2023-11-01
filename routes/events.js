@@ -61,6 +61,13 @@ router.post("/newformdata", async (req, res) => {
 });
 
 
+router.delete("/:evtUid", (req, res) => {
+
+    Event.deleteOne({evtUid: req.params.evtUid})
+         .then(data => res.json(data))
+
+});
+
 // Recherche d'événements (test Kodzo)
 
 router.get("/test/1/", async (req, res) => {
