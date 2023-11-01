@@ -12,7 +12,7 @@ module.exports = async function getEventFromEvUid(evtUid) {
     let result = [];
 
     // Récupération de l'événement en base
-    let searchedEvent = await Event.findOne({evtUid}); // on reçoit null si rien n'a été trouvé
+    let searchedEvent = await Event.findOne({evtUid}).populate("owner"); // on reçoit null si rien n'a été trouvé
     console.log(evtUid, searchedEvent)
     if (searchedEvent) {
         result.push(results[4]);
