@@ -66,13 +66,13 @@ router.put("/update", (req, res) => {
     Event.updateOne({evtUid: req.body.evtUid}, {
         $set: {
             title: req.body.title,
-            shortDescription: req.body.shortDescription,
-            longDescription: req.body.longDescription,
-            bannerPicture: req.body.bannerPicture,
-            startDate: req.body.startDate,
-            endDate: req.body.endDate,
-            country: req.body.country,
-            city: req.body.city,
+            // shortDescription: req.body.shortDescription,
+            // longDescription: req.body.longDescription,
+            // bannerPicture: req.body.bannerPicture,
+            // startDate: req.body.startDate,
+            // endDate: req.body.endDate,
+            // country: req.body.country,
+            // city: req.body.city,
         }
     }).then(data => {
         res.json({result: true, data })
