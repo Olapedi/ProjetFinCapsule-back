@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { default: mongoose } = require('mongoose');
 var fetch = require('node-fetch');
+const Boost = require('../models/boosts')
 
 // Import Project Modules
 
@@ -26,6 +27,10 @@ router.get('/', async function(req, res, next) {
   res.json(result);
 
 });
+
+router.delete('/',(req,res)=>{
+  Boost.deleteMany({})
+})
 
 
 //Rechercher un boost par son Uid

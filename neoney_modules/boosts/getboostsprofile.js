@@ -22,7 +22,7 @@ module.exports = async function getboostsprofile(param){
         // Recherche des boosts du profil
 
         const data = await Boost.find().populate('sender').populate('receiver');
-
+        
         const dataSender = data.filter((e) => e.sender.proUid == param)
         const dataReceiver = data.filter((e) => e.receiver.proUid == param)
 

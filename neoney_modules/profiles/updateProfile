@@ -1,0 +1,42 @@
+var express = require('express');
+var router = express.Router();
+const mongoose = require('mongoose');
+const Profile = require('../../models/profiles')
+
+module.exports = async function updateProfile(body) {
+    try {
+      const update = {
+        mainPicture: body.mainPicture,
+        'countries.0': body.country.value,
+        'cities.0': body.city.value,
+        'jobCategories.0': body.jobCategories[0],
+        jobSubCategories: body.jobSubCategories,
+        strengths: body.tags.map(tag => ({ text: tag })),
+        'cards.0.displayName': body.displayName,
+        'cards.0.title': body.title,
+        'cards.0.organization': body.organization,
+        'cards.0.description': body.description,
+        'cards.0.phone': body.phone,
+        'cards.0.email': body.email,
+        'cards.0.website': body.website,
+        'updates.0': body.about,
+        socialLinkedIn: body.socialLinkedIn,
+        socialFacebook: body.socialFacebook,
+        socialInstagram: body.socialInstagram,
+        socialYoutube: body.socialYoutube,
+        socialTweeter: body.socialTweeter,
+      };
+  
+      // Use updateOne to update the Profile document by proUid
+      const updateResult = await Profile.updateOne({ proUid : body.proUid }, { $set: update });
+  
+      if (updateResult.nModified === 0) {
+        return { message: 'Profil introuvable ou édition non effectuée', result: false };
+      }
+  
+      return { message: 'Le profil a été modifié avec succès', result: true };
+    } catch (error) {
+      console.error('erreur : ', error);
+      return { message: 'Échec de la modification', result: false };
+    }
+  }

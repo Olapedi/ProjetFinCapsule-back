@@ -16,7 +16,9 @@ const checkuseruid = require('../neoney_modules/_common/checkuseruid');
 const checkbodynewprofile = require('../neoney_modules/profiles/checkbodynewprofile');
 const getprofiles = require('../neoney_modules/profiles/getprofiles')
 const getprofilesuser = require('../neoney_modules/profiles/getprofilesuser')
-const getprofilesbydisplayname = require('../neoney_modules/profiles/getprofilesbydisplayname')
+const getprofilesbydisplayname = require('../neoney_modules/profiles/getprofilesbydisplayname');
+const deleteAccount = require('../neoney_modules/profiles/deleteAccount');
+const updateProfile = require('../neoney_modules/profiles/updateProfile');
 
 /* Lister tous les profils de la base */
 
@@ -109,6 +111,19 @@ router.post('/new', async (req, res) => {
   }
 
   });
+
+router.put('/', async (req,res)=>{
+  console.log(req.body)
+  const result = await updateProfile(req.body)
+  res.json(result)
+})
+
+
+router.delete('/', async (req, res)=>{
+  console.log('body passé au back : ', req.body)
+  const result = await deleteAccount(req.body)
+  res.json(result)
+})
 
   
 module.exports = router;
