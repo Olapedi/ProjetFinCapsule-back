@@ -61,10 +61,42 @@ router.post("/newformdata", async (req, res) => {
 });
 
 
+router.put("/update", (req, res) => {
+
+    Event.updateOne({evtUid: req.body.evtUid}, {
+        $set: {
+            "occurences.0.title": req.body.title,
+            "occurences.0.shortDescription": req.body.shortDescription,
+            longDescription: req.body.longDescription,
+            bannerPicture: req.body.bannerPicture,
+            "occurences.0.startDate": req.body.startDate,
+            "occurences.0.endDate": req.body.endDate,
+            country: req.body.country,
+            city: req.body.city,
+        }
+    }).then(data => {
+        let result = []
+        result.push(results[12])
+        result.push(data)
+
+        res.json(result)
+    });
+
+});
+
+
 router.delete("/:evtUid", (req, res) => {
 
     Event.deleteOne({evtUid: req.params.evtUid})
-         .then(data => res.json(data))
+         .then(data => {
+            
+            let result = []
+            result.push(results[11])
+            result.push(data)
+
+            res.json(result)
+            
+        });
 
 });
 
