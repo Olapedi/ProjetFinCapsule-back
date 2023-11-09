@@ -10,7 +10,7 @@ const results = require('../../neoney_results/results_users.json')
 
 // Function
 
-module.exports = async function getprofiles(param){
+module.exports = async function getusers(param){
 
     let result = [];
 

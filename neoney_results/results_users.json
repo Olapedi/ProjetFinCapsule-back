@@ -34,5 +34,4 @@
     { "id": 32, "message" : "Le champ phone est manquant", "result": false},
     { "id": 33, "message" : "Le champ sponsor est manquant", "result": false}
 
-    
   ]
